@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">PDBilPleje</string>
+
+
+
+
+    <string name="loginButton">Login</string>
+    <string name="googleSignUpButton">Login med Google</string>
+    <string name="registerButton">Opret bruger</string>
+    <string name="emailTextView">Email</string>
+    <string name="passwordTextView">Password</string>
+
+
 </resources>
