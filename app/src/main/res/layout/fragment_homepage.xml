@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:contentDescription="@string/ignore"
         android:id="@+id/newsImageview"
         android:layout_width="200sp"
         android:layout_height="200sp"

@@ -9,6 +9,9 @@
     <string name="registerButton">Opret bruger</string>
     <string name="emailTextView">Email</string>
     <string name="passwordTextView">Password</string>
+    <string name="ignore">ignore</string>
+    <string name="kurder">Kurder</string>
+    <string name="indstillinger">Indstillinger</string>
 
 
 </resources>

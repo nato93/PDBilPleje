@@ -1,20 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <FrameLayout
         android:id="@+id/mainPageLayout"
         android:layout_width="match_parent"
-        android:layout_height="660dp">
+        android:layout_height="wrap_content">
 
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/botNavView"
         android:layout_width="match_parent"
         android:layout_height="70sp"
         android:background="@color/design_default_color_primary">
+
+
+        <ImageButton
+            android:id="@+id/bookingView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="80sp"
+            app:srcCompat="@android:drawable/ic_menu_today"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/newsView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            app:srcCompat="@android:drawable/ic_dialog_alert"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/settingsView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="80sp"
+            app:srcCompat="@android:drawable/ic_menu_manage"
+            tools:ignore="ContentDescription" />
+
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 </LinearLayout>

@@ -13,6 +13,7 @@ import dk.aau.hr.pdbilpleje.R;
 public class HomepageFragment extends Fragment {
 
     public ImageView mNewsImageView;
+    public ImageView mSettingsImageView;
 
 
 
@@ -25,7 +26,7 @@ public class HomepageFragment extends Fragment {
 
         mNewsImageView = view.findViewById(R.id.newsImageview);
 
-
+        mSettingsImageView = view.findViewById(R.id.settingsView);
 
 
         //gaugeInfoText = view.findViewById(R.id.mInfoText);
