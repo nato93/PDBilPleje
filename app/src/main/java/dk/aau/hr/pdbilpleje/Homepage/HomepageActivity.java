@@ -47,7 +47,7 @@ public class HomepageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 FragmentManager fm = getSupportFragmentManager();
                 fm.beginTransaction()
-                        .add(R.id.mainPageLayout, new BookingFragment())
+                        .replace(R.id.mainPageLayout, new BookingFragment())
                         .commit();
 
             }
@@ -59,7 +59,7 @@ public class HomepageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 FragmentManager fm = getSupportFragmentManager();
                 fm.beginTransaction()
-                        .add(R.id.mainPageLayout, new SettingsFragment())
+                        .replace(R.id.mainPageLayout, new SettingsFragment())
                         .commit();
 
             }
@@ -72,7 +72,7 @@ public class HomepageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 FragmentManager fm = getSupportFragmentManager();
                 fm.beginTransaction()
-                        .add(R.id.mainPageLayout, new HomepageFragment())
+                        .replace(R.id.mainPageLayout, new HomepageFragment())
                         .commit();
 
             }
