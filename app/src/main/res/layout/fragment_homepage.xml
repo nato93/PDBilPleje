@@ -29,17 +29,30 @@
                 tools:visibility="visible" />
 
             <ImageView
-                android:id="@+id/newsImageview2"
+                android:id="@+id/newsImageview3"
                 android:layout_width="300sp"
                 android:layout_height="200sp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="20sp"
                 android:layout_marginTop="60sp"
                 android:layout_marginRight="20sp"
-                android:layout_marginBottom="20sp"
+                android:layout_marginBottom="60sp"
                 android:contentDescription="@string/ignore"
                 android:visibility="visible"
-                app:srcCompat="@color/colorAccent"
+                app:srcCompat="@color/design_default_color_primary"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/newsImageview2"
+                android:layout_width="300sp"
+                android:layout_height="200sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="20sp"
+                android:layout_marginRight="20sp"
+                android:layout_marginBottom="60sp"
+                android:contentDescription="@string/ignore"
+                android:visibility="visible"
+                app:srcCompat="@color/colorPrimaryDark"
                 tools:visibility="visible" />
         </LinearLayout>
     </ScrollView>

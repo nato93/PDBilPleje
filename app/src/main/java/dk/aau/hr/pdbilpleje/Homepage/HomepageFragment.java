@@ -12,7 +12,7 @@ import dk.aau.hr.pdbilpleje.R;
 
 public class HomepageFragment extends Fragment {
 
-    public ImageView mNewsImageView, mNewsImageView2;
+    public ImageView mNewsImageView, mNewsImageView2, mNewsImageView3;
     public ImageView mSettingsImageView;
 
 
@@ -26,6 +26,7 @@ public class HomepageFragment extends Fragment {
 
         mNewsImageView = view.findViewById(R.id.newsImageview);
         mNewsImageView2 = view.findViewById(R.id.newsImageview2);
+        mNewsImageView3 = view.findViewById(R.id.newsImageview3);
 
         mSettingsImageView = view.findViewById(R.id.settingsView);
 
