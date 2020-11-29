@@ -20,7 +20,7 @@ public class HomepageActivity extends AppCompatActivity {
 
 
     public BottomNavigationView mBotNavView;
-    public ImageButton mNewsView, mSettingsView, mBookingView;
+    public ImageButton mNewsView, mSettingsView, mBookingView, mProfileView;
 
 
     @Override
@@ -65,6 +65,16 @@ public class HomepageActivity extends AppCompatActivity {
             }
         });
 
+        mProfileView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fm = getSupportFragmentManager();
+                fm.beginTransaction()
+                        .replace(R.id.mainPageLayout, new SettingsFragment())
+                        .commit();
+
+            }
+        });
 
 
         mNewsView.setOnClickListener(new View.OnClickListener() {

@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginEnd="80sp"
+            android:layout_marginEnd="140sp"
             app:srcCompat="@android:drawable/ic_menu_today"
             tools:ignore="ContentDescription" />
 
@@ -34,8 +34,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_gravity="center"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="135sp"
             app:srcCompat="@android:drawable/ic_dialog_alert"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/profileView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="230sp"
+            app:srcCompat="@android:drawable/ic_menu_myplaces"
             tools:ignore="ContentDescription" />
 
         <ImageButton
@@ -43,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="80sp"
+            android:layout_marginStart="145sp"
             app:srcCompat="@android:drawable/ic_menu_manage"
             tools:ignore="ContentDescription" />
 
