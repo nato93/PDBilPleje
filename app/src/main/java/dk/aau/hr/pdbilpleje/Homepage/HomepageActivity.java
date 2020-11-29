@@ -36,6 +36,7 @@ public class HomepageActivity extends AppCompatActivity {
         mBotNavView = findViewById(R.id.botNavView);
         mNewsView = findViewById(R.id.newsView);
         mSettingsView = findViewById(R.id.settingsView);
+        mProfileView = findViewById(R.id.profileView);
         mBookingView = findViewById(R.id.bookingView);
 
 
