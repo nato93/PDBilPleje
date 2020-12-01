@@ -5,8 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.android.gms.maps.MapView;
 
@@ -15,11 +17,9 @@ import dk.aau.hr.pdbilpleje.R;
 
 public class BookingWhereFragment extends Fragment {
 
-    private MapView mMapView;
-    private Button mNextButton, mPreviousButton;
-
-
-
+    public MapView mMapView;
+    private Button mBookingNextButton, mBookingPreviousButton;
+    private Spinner mSpinnerWhereView;
 
 
     @Override
@@ -29,14 +29,32 @@ public class BookingWhereFragment extends Fragment {
 
 
         mMapView = view.findViewById(R.id.bookingMapView);
-        mNextButton = view.findViewById(R.id.bookingNextButton);
-        mPreviousButton = view.findViewById(R.id.bookingPreviousButton);
+        mSpinnerWhereView = view.findViewById(R.id.spinnerWhereView);
+        mBookingNextButton = view.findViewById(R.id.bookingNextButton);
+        mBookingPreviousButton = view.findViewById(R.id.bookingPreviousButton);
 
 
+        mBookingPreviousButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BookingFragment bookingFragment= new BookingFragment();
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction()
+                        .replace(R.id.mainPageLayout, bookingFragment, bookingFragment.getTag())
+                        .commit();
+            }
+        });
 
-
-
+        mBookingNextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BookingCalendarFragment bookingCalendarFragment= new BookingCalendarFragment();
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction()
+                        .replace(R.id.mainPageLayout, bookingCalendarFragment, bookingCalendarFragment.getTag())
+                        .commit();
+            }
+        });
         return view;
-
     }
 }

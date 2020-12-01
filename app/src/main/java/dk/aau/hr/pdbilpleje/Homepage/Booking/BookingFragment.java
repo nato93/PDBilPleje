@@ -14,8 +14,8 @@ import dk.aau.hr.pdbilpleje.R;
 
 public class BookingFragment extends Fragment {
 
-    private Spinner mSpinner1, mSpinner2;
-    private Button mBookingNextButton;
+    public Spinner mServiceSpinner, mCarSpinner;
+    public Button mBookingNextButton;
 
 
     @Override
@@ -24,8 +24,8 @@ public class BookingFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_booking, container, false);
 
-        mSpinner1 = view.findViewById(R.id.spinnerBookingView);
-        mSpinner2 = view.findViewById(R.id.spinnerBookingView2);
+        mServiceSpinner = view.findViewById(R.id.spinnerServiceView);
+        mCarSpinner = view.findViewById(R.id.spinnerCarView);
         mBookingNextButton = view.findViewById(R.id.bookingNextButton);
 
 
