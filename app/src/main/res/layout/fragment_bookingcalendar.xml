@@ -42,11 +42,18 @@
         app:layout_constraintVertical_bias="0.957"
         tools:text="@string/previousButton" />
 
-
-
-
-
-
+    <EditText
+        android:id="@+id/editText6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="time"
+        android:text="Tidspunkt"
+        app:layout_constraintBottom_toTopOf="@+id/calendarView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.697" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
