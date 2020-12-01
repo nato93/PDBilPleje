@@ -25,7 +25,7 @@ public class BookingCalendarFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_bookingwhere, container, false);
+        View view = inflater.inflate(R.layout.fragment_bookingcalendar, container, false);
 
 
         mMapView = view.findViewById(R.id.bookingMapView);
