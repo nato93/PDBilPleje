@@ -3,15 +3,14 @@ package dk.aau.hr.pdbilpleje.Homepage;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import dk.aau.hr.pdbilpleje.Homepage.Booking.BookingFragment;
 import dk.aau.hr.pdbilpleje.R;
 
 

@@ -12,7 +12,7 @@
     <string name="ignore">ignore</string>
     <string name="kurder">Kurder</string>
     <string name="indstillinger">Indstillinger</string>
-
+    <string name="nextButton">Næste ></string>
 
     <string-array name="service">
         <item>Komplet vask 799kr</item>
