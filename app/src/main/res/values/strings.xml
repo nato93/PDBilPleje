@@ -2,8 +2,6 @@
     <string name="app_name">PDBilPleje</string>
 
 
-
-
     <string name="loginButton">Login</string>
     <string name="googleSignUpButton">Login med Google</string>
     <string name="registerButton">Opret bruger</string>
@@ -34,6 +32,8 @@
         <item>min erhvervs addresse, rødovre</item>
     </string-array>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
