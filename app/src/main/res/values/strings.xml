@@ -21,9 +21,14 @@
         <item>Nano-Coating 5999kr</item>
         <item>Dæk-skift 1999kr</item>
         <item>Polering 2999kr</item>
+    </string-array>
 
+    <string-array name="bil">
+        <item>min bil, suv</item>
+        <item>min bil, minibil</item>
 
     </string-array>
+
 
 
 </resources>
