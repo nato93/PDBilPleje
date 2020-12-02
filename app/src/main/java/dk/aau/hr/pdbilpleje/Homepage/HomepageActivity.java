@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import dk.aau.hr.pdbilpleje.Homepage.Booking.BookingFragment;
+import dk.aau.hr.pdbilpleje.Homepage.Profile.ProfileFragment;
 import dk.aau.hr.pdbilpleje.R;
 
 
@@ -70,7 +71,7 @@ public class HomepageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 FragmentManager fm = getSupportFragmentManager();
                 fm.beginTransaction()
-                        .replace(R.id.mainPageLayout, new SettingsFragment())
+                        .replace(R.id.mainPageLayout, new ProfileFragment())
                         .commit();
 
             }
