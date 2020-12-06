@@ -28,16 +28,17 @@ public class DatabaseHandler {
     private FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
 
     // User type
-    public static int USER_TYPE;
+/*    public static int USER_TYPE;
     public int getUserType() {
         return USER_TYPE;
     }
-    public void setUserType(int i) { USER_TYPE = i; }
+    public void setUserType(int i) { USER_TYPE = i; }*/
 
     // Collection references
     /*private CollectionReference users = db.collection("users");
     private CollectionReference restaurants = db.collection("restaurants");*/
 
+/*
     private static final String TAG = "CustomerSignupFrag";
     // private static final String KEY_ID = "UID";
     private static final String KEY_TYPE = "Type";
@@ -54,9 +55,10 @@ public class DatabaseHandler {
             UID = fUser.getUid();
         }
     }
+*/
 
 
-
+/*
 
     public void emailVerification() {
 
@@ -82,7 +84,7 @@ public class DatabaseHandler {
         // user.put(KEY_ID, UID);
         user.put(KEY_TYPE, USER_TYPE);
 
-/*        users.document(UID)
+*//*        users.document(UID)
                 .set(user)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -95,7 +97,7 @@ public class DatabaseHandler {
                     public void onFailure(@NonNull Exception e) {
                         Log.w(TAG, "Error writing document", e);
                     }
-                });*/
+                });*//*
     }
 
     public void saveUser(String resNameVal, String resDescVal, String resEmailVal, String resAddressVal) {
@@ -107,7 +109,7 @@ public class DatabaseHandler {
         restaurant.put(KEY_ADDRESS, resAddressVal);
         // restaurant.put(KEY_ID, UID);
         restaurant.put(KEY_TYPE, USER_TYPE);
-/*
+*//*
         restaurants.document(UID)
                 .set(restaurant)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -121,7 +123,7 @@ public class DatabaseHandler {
                     public void onFailure(@NonNull Exception e) {
                         Log.w(TAG, "Error writing document", e);
                     }
-                });*/
+                });*//*
     }
 
     public void reAuthUser() {
@@ -159,5 +161,7 @@ public class DatabaseHandler {
 
 
     public void updateUI(FirebaseUser user) {
-    }
+    }*/
+
+
 }

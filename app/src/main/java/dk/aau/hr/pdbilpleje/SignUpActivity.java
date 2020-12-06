@@ -22,12 +22,10 @@ import dk.aau.hr.pdbilpleje.Homepage.HomepageActivity;
 public class SignUpActivity extends AppCompatActivity {
 
 
-    public TextView mtextFieldEmail2, getMtextFieldPassword2;
-    public Button msignupButton;
-    private FirebaseAuth mAuth;
-    private final static String TAG = "";
-
-
+    public TextView mTextFieldEmail2, mTextFieldPassword2;
+    public Button mSignupButton;
+    //private FirebaseAuth mAuth;
+    //private final static String TAG = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +34,16 @@ public class SignUpActivity extends AppCompatActivity {
 
 
         //Initializing database
-        final DatabaseHandler db = new DatabaseHandler();
-        mAuth = FirebaseAuth.getInstance();
+        //final DatabaseHandler db = new DatabaseHandler();
+        //mAuth = FirebaseAuth.getInstance();
 
 
-        mtextFieldEmail2 = findViewById(R.id.textFieldEmail2);
-        msignupButton = findViewById(R.id.signupButton);
-        getMtextFieldPassword2 = findViewById(R.id.textFieldPassword2);
+        //mTextFieldEmail2 = findViewById(R.id.textFieldEmail2);
+        mSignupButton = findViewById(R.id.signupButton);
+        //mTextFieldPassword2 = findViewById(R.id.textFieldPassword2);
 
 
-        msignupButton.setOnClickListener(new View.OnClickListener() {
+        mSignupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -86,8 +84,10 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
 
-    public FirebaseUser updateUI(FirebaseUser user) {
+/*    public FirebaseUser updateUI(FirebaseUser user) {
         return user;
 
-    }
+    }*/
+
+
 }
