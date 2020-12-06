@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import dk.aau.hr.pdbilpleje.Homepage.HomepageActivity;
 import dk.aau.hr.pdbilpleje.R;
 
@@ -18,6 +21,20 @@ public class FrontPageActivity extends AppCompatActivity {
 
     public Button mLoginButton;
     public TextView mTextViewSignUp;
+
+    private FirebaseAuth mAuth;
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        //updateUI(currentUser);
+        //if current user is signed in change to homepage
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
