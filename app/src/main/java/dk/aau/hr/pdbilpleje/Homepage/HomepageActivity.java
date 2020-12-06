@@ -3,15 +3,15 @@ package dk.aau.hr.pdbilpleje.Homepage;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import dk.aau.hr.pdbilpleje.Homepage.Booking.BookingFragment;
+import dk.aau.hr.pdbilpleje.Homepage.Profile.ProfileFragment;
 import dk.aau.hr.pdbilpleje.R;
 
 
@@ -20,7 +20,7 @@ public class HomepageActivity extends AppCompatActivity {
 
 
     public BottomNavigationView mBotNavView;
-    public ImageButton mNewsView, mSettingsView, mBookingView;
+    public ImageButton mNewsView, mSettingsView, mBookingView, mProfileView;
 
 
     @Override
@@ -36,6 +36,7 @@ public class HomepageActivity extends AppCompatActivity {
         mBotNavView = findViewById(R.id.botNavView);
         mNewsView = findViewById(R.id.newsView);
         mSettingsView = findViewById(R.id.settingsView);
+        mProfileView = findViewById(R.id.profileView);
         mBookingView = findViewById(R.id.bookingView);
 
 
@@ -65,6 +66,16 @@ public class HomepageActivity extends AppCompatActivity {
             }
         });
 
+        mProfileView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fm = getSupportFragmentManager();
+                fm.beginTransaction()
+                        .replace(R.id.mainPageLayout, new ProfileFragment())
+                        .commit();
+
+            }
+        });
 
 
         mNewsView.setOnClickListener(new View.OnClickListener() {

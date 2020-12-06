@@ -2,17 +2,60 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
-        android:id="@+id/settingsText"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/indstillinger"
-        android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/switch1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingStart="70dp"
+        android:paddingEnd="70dp"
+        android:text="Tillad notifikationer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.201" />
+
+    <Switch
+        android:id="@+id/switch3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingStart="70dp"
+        android:paddingEnd="70dp"
+        android:text="Tillad applikation at sende SMS og emails"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/switch1"
+        app:layout_constraintVertical_bias="0.085" /><![CDATA[
+
+
+
+
+    android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+]]>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

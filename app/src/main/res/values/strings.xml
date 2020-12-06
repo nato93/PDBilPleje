@@ -8,8 +8,8 @@
     <string name="emailTextView">Email</string>
     <string name="passwordTextView">Password</string>
     <string name="ignore">ignore</string>
-    <string name="kurder">Kurder</string>
     <string name="indstillinger">Indstillinger</string>
+
     <string name="noAccount">Don’t have an account? Sign up here</string>
     <string name="todo">TODO</string>
     <string name="forgot_password_click_here">Forgot password? Click here</string>
@@ -18,6 +18,30 @@
     <string name="agree_to_accept_our_privacy_policy_terms_of_service"><![CDATA[By continuing, you agree to accept our Privacy Policy & Terms of Service.]]></string>
     <string name="repeat_password">Repeat Password</string>
     <string name="phone_number">Phone Number</string>
+
+    <string name="profil">Min Profil</string>
+    <string name="nextButton">Næste ></string>
+    <string name="previousButton">Tilbage </string>
+
+    <string-array name="service">
+        <item>Komplet vask 799kr</item>
+        <item>Eksklusiv vask 1299kr</item>
+        <item>Luksus vask 799kr</item>
+        <item>Nano-Coating 5999kr</item>
+        <item>Dæk-skift 1999kr</item>
+        <item>Polering 2999kr</item>
+    </string-array>
+
+    <string-array name="bil">
+        <item>min bil, suv</item>
+        <item>min bil, minibil</item>
+    </string-array>
+
+    <string-array name="hvor">
+        <item>min private addresse, københavn</item>
+        <item>min erhvervs addresse, rødovre</item>
+    </string-array>
+
 
 
 </resources>

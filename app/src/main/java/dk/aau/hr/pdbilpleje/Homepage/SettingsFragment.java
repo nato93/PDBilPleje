@@ -20,6 +20,4 @@ public class SettingsFragment extends Fragment {
 //aye
         return view;
     }
-
-
 }
