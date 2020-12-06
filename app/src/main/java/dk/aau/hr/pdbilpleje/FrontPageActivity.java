@@ -34,9 +34,20 @@ public class FrontPageActivity extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                Intent intent = new Intent(FrontPageActivity.this, SignUpActivity.class);
+                Intent intent = new Intent(FrontPageActivity.this, LoginActivity.class);
                 startActivity(intent);
 
+            }
+        });
+
+
+        mTextViewSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Intent intent = new Intent(FrontPageActivity.this, SignUpActivity.class);
+                startActivity(intent);
 
             }
         });
