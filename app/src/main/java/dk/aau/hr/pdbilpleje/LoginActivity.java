@@ -27,12 +27,12 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        mEmailTextView = findViewById(R.id.textFieldEmail);
-        mPasswordTextview = findViewById(R.id.textFieldPassword);
+        //mEmailTextView = findViewById(R.id.textFieldEmail);
+        //mPasswordTextview = findViewById(R.id.textFieldPassword);
         mLoginButton = findViewById(R.id.loginButton);
         //mFBloginButton = findViewById(R.id.fb_login_button);
         mLogoImageView = findViewById(R.id.imageViewLogo2);
-        mLogoImageView.setImageResource(R.drawable.pdbilplejelogo);
+        //mLogoImageView.setImageResource(R.drawable.pdbilplejelogo);
 
 
 
