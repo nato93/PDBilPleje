@@ -40,7 +40,7 @@ public class HomepageActivity extends AppCompatActivity {
         mBookingView = findViewById(R.id.bookingView);
 
 
-        Toast.makeText(this, "It worked mothersucka!", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "It worked mothersucka!", Toast.LENGTH_SHORT).show();
 
 
         mBookingView.setOnClickListener(new View.OnClickListener() {
