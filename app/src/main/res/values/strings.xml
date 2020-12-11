@@ -18,6 +18,11 @@
     <string name="agree_to_accept_our_privacy_policy_terms_of_service"><![CDATA[By continuing, you agree to accept our Privacy Policy & Terms of Service.]]></string>
     <string name="repeat_password">Repeat Password</string>
     <string name="phone_number">Phone Number</string>
+    <string name="Name">Fornavn</string>
+    <string name="LastName">Efternavn</string>
+    <string name="Vej">Vej</string>
+    <string name="VejNr">Vej nr</string>
+    <string name="Postnummer">Postnummer</string>
 
     <string name="profil">Min Profil</string>
     <string name="nextButton">Næste ></string>

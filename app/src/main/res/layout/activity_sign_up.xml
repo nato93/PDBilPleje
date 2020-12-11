@@ -106,7 +106,105 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword" />
+                    android:inputType="phone" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textFieldName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/Name"
+                app:endIconMode="none"
+                app:layout_constraintLeft_toLeftOf="@id/left_guideline"
+                app:layout_constraintRight_toRightOf="@id/right_guideline"
+                app:layout_constraintTop_toBottomOf="@id/textFieldPhoneNumber">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textInputName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textFieldLastName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/LastName"
+                app:endIconMode="none"
+                app:layout_constraintLeft_toLeftOf="@id/left_guideline"
+                app:layout_constraintRight_toRightOf="@id/right_guideline"
+                app:layout_constraintTop_toBottomOf="@id/textFieldName">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textInputLastName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textFieldStreet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/Vej"
+                app:endIconMode="none"
+                app:layout_constraintLeft_toLeftOf="@id/left_guideline"
+                app:layout_constraintRight_toRightOf="@id/right_guideline"
+                app:layout_constraintTop_toBottomOf="@id/textFieldLastName">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textInputStreet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textFieldStreetNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/VejNr"
+                app:endIconMode="none"
+                app:layout_constraintLeft_toLeftOf="@id/left_guideline"
+                app:layout_constraintRight_toRightOf="@id/right_guideline"
+                app:layout_constraintTop_toBottomOf="@id/textFieldStreet">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textInputStreetNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textFieldPostcode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/Postnummer"
+                app:endIconMode="none"
+                app:layout_constraintLeft_toLeftOf="@id/left_guideline"
+                app:layout_constraintRight_toRightOf="@id/right_guideline"
+                app:layout_constraintTop_toBottomOf="@id/textFieldStreetNumber">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textInputPostcode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -119,7 +217,7 @@
                 android:textAllCaps="true"
                 app:layout_constraintLeft_toLeftOf="@id/left_guideline"
                 app:layout_constraintRight_toRightOf="@id/right_guideline"
-                app:layout_constraintTop_toBottomOf="@id/textFieldPhoneNumber" />
+                app:layout_constraintTop_toBottomOf="@id/textFieldPostcode" />
 
             <TextView
                 android:id="@+id/textViewPolicy"
