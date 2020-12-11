@@ -63,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                //uncomment login if you want login to work again
                 //Login();
                 Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
                 startActivity(intent);
