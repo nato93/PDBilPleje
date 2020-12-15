@@ -5,20 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView5"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/left_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20sp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.10"
+        app:layout_constraintGuide_begin="43dp"/>
 
-        android:text="Hvilken Bil?"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerCarView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinnerServiceView"
-        app:layout_constraintVertical_bias="0.537" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/right_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="370dp" />
+
 
     <TextView
         android:id="@+id/textView"
@@ -32,46 +34,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+    <Spinner
+        android:id="@+id/spinnerServiceView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50sp"
-        android:layout_marginBottom="20sp"
-        android:text="Hvilken Service?"
-
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/spinnerServiceView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.324"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="80dp"
+        android:entries="@array/service"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Spinner
-        android:id="@+id/spinnerServiceView"
-        android:layout_width="230sp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20sp"
-        android:entries="@array/service"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.22" />
-
-    <Spinner
         android:id="@+id/spinnerCarView"
-        android:layout_width="230sp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20sp"
+        android:layout_marginTop="40dp"
         android:entries="@array/bil"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerServiceView"
-        app:layout_constraintVertical_bias="0.159" />
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@id/right_guideline"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/left_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerServiceView" />
 
     <Button
         android:id="@+id/bookingNextButton"
@@ -93,24 +78,26 @@
         android:clickable="true"
         app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.574"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/right_guideline"
+        app:layout_constraintHorizontal_bias="0.663"
+        app:layout_constraintStart_toStartOf="@id/left_guideline"
         app:layout_constraintTop_toBottomOf="@+id/spinnerCarView"
-        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintVertical_bias="0.073"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="20sp"
         android:text="Tilføj ny bil"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.272"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/right_guideline"
+        app:layout_constraintHorizontal_bias="0.318"
+        app:layout_constraintStart_toStartOf="@id/left_guideline"
         app:layout_constraintTop_toBottomOf="@+id/spinnerCarView"
-        app:layout_constraintVertical_bias="0.116" />
+        app:layout_constraintVertical_bias="0.098" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

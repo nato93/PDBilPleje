@@ -10,6 +10,12 @@
     <string name="ignore">ignore</string>
     <string name="indstillinger">Indstillinger</string>
 
+
+    <!-- Exception Strings -->
+    <string name="weak_password_exception">Password needs to be at least 6 characters.</string>
+    <string name="wrong_email_format">Pleave enter a valid email.</string>
+    <string name="email_is_in_use">The entered email is already in use.</string>
+
     <string name="noAccount">Don’t have an account? Sign up here</string>
     <string name="todo">TODO</string>
     <string name="forgot_password_click_here">Forgot password? Click here</string>
@@ -29,6 +35,7 @@
     <string name="previousButton">Tilbage </string>
 
     <string-array name="service">
+        <item>Hvilken service?</item>
         <item>Komplet vask 799kr</item>
         <item>Eksklusiv vask 1299kr</item>
         <item>Luksus vask 799kr</item>
@@ -38,8 +45,10 @@
     </string-array>
 
     <string-array name="bil">
+        <item>Hvilken bil?</item>
         <item>min bil, suv</item>
         <item>min bil, minibil</item>
+        <item>BMW, Stationcar</item>
     </string-array>
 
     <string-array name="hvor">
