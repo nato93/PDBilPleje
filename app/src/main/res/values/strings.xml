@@ -16,6 +16,7 @@
     <string name="wrong_email_format">Pleave enter a valid email.</string>
     <string name="email_is_in_use">The entered email is already in use.</string>
 
+
     <string name="noAccount">Don’t have an account? Sign up here</string>
     <string name="todo">TODO</string>
     <string name="forgot_password_click_here">Forgot password? Click here</string>

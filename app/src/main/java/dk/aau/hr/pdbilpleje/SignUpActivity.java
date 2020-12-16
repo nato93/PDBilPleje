@@ -38,8 +38,8 @@ public class SignUpActivity extends AppCompatActivity {
     public EditText mEmailEt,mRepeatPasswordEt, mPasswordEt, mPhoneNumberEt;
     public Button mSignUpButton;
     private final static String TAG = "SignUpActivity";
-    public FirebaseFirestore fStore;
-    public FirebaseAuth mAuth;
+    FirebaseFirestore fStore;
+    private FirebaseAuth mAuth;
     public FirebaseUser fUser;
     private String userID;
     private TextView mExistingUser, mError;
@@ -55,18 +55,11 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-/*
-        //Instanstiating the firebase
-        mAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();*/
 
-
-        userID = fUser.getUid();
-
-
+        //instantiating the firebase
+        //userID = fUser.getUid();
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-
 
         //Assigning the textfields
         mEmailEt            = findViewById(R.id.textInputEmail2);
@@ -74,6 +67,7 @@ public class SignUpActivity extends AppCompatActivity {
         mRepeatPasswordEt   = findViewById(R.id.textInputRepeatPassword2);
         mSignUpButton       = findViewById(R.id.signupButton);
         mPhoneNumberEt      = findViewById(R.id.textInputPhoneNumber);
+
 
         mSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,15 +79,35 @@ public class SignUpActivity extends AppCompatActivity {
                 passwordRepeat = mRepeatPasswordEt.getText().toString();
                 //phoneNumber = mPhoneNumberEt.getText().toString();
 
+                //createAccount();
+
+                Map<String, String> user = new HashMap<>();
+                user.put("name", "email");
 
 
-                if (!password.equals(passwordRepeat)) {
+                // Add a new document with a generated ID
+                fStore.collection("users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Toast.makeText(getApplicationContext(), "registration successful", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), HomepageActivity.class));
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(SignUpActivity.this, "registration didnt work!", Toast.LENGTH_SHORT).show();
+
+
+                        return;
+                    }
+                });
+
+/*                if (!password.equals(passwordRepeat)) {
                     Toast.makeText(SignUpActivity.this,"Passwords do not match.", Toast.LENGTH_SHORT).show();
                 } else {
                     createAccount();
-                }
-
-
+                }*/
             }
         });
 
@@ -115,16 +129,6 @@ public class SignUpActivity extends AppCompatActivity {
                                                 startActivity(new Intent(getApplicationContext(), HomepageActivity.class));
                                                 //Now save the information in the firebase firestore
 
-
-
-                                                Map<String, Object> user = new HashMap<>();
-                                                user.put("first", "Ada");
-                                                user.put("last", "Lovelace");
-                                                user.put("born", 1815);
-
-                                                // Add a new document with a generated ID
-                                                fStore.collection("users")
-                                                        .add(user);
 
 
 /*                                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
