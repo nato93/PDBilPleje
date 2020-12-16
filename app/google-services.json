@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "644489882332",
+    "firebase_url": "https://pdbilpleje-default-rtdb.firebaseio.com",
+    "project_id": "pdbilpleje",
+    "storage_bucket": "pdbilpleje.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644489882332:android:5d4064eb43dfc0bd1a6219",
+        "android_client_info": {
+          "package_name": "dk.aau.hr.pdbilpleje"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644489882332-cd41pjg355qoa6h6rlenvkm88nsqb1cu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrsS5T6KxqBszxjJNt4N1dw_jGJy4ck2M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "644489882332-cd41pjg355qoa6h6rlenvkm88nsqb1cu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

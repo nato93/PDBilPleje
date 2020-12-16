@@ -64,9 +64,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 //uncomment login() and delete the below intent  if you want login to work again
-                //Login();
-                Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
-                startActivity(intent);
+                Login();
+                //Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
+                //startActivity(intent);
 
             }
         });

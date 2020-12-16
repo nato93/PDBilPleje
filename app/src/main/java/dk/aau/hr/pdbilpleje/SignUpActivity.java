@@ -43,13 +43,14 @@ public class SignUpActivity extends AppCompatActivity {
     public FirebaseUser fUser;
     private String userID;
     private TextView mExistingUser, mError;
-    String email, password, phoneNumber, passwordRepeat;
+    public String email, password, phoneNumber, passwordRepeat;
 
-    private static final String KEY_EMAIL = "Email";
-    private static final String KEY_PASSWORD = "Email";
-
-
-
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+       // FirebaseUser currentUser = mAuth.getCurrentUser();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,11 +80,11 @@ public class SignUpActivity extends AppCompatActivity {
                 passwordRepeat = mRepeatPasswordEt.getText().toString();
                 //phoneNumber = mPhoneNumberEt.getText().toString();
 
-                //createAccount();
+                createAccount();
 
-                Map<String, String> user = new HashMap<>();
+                //Create a HashMap where you store the user data
+/*                Map<String, String> user = new HashMap<>();
                 user.put("name", "email");
-
 
                 // Add a new document with a generated ID
                 fStore.collection("users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -97,22 +98,23 @@ public class SignUpActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(SignUpActivity.this, "registration didnt work!", Toast.LENGTH_SHORT).show();
-
-
                         return;
                     }
-                });
+                });*/
 
 /*                if (!password.equals(passwordRepeat)) {
                     Toast.makeText(SignUpActivity.this,"Passwords do not match.", Toast.LENGTH_SHORT).show();
                 } else {
                     createAccount();
                 }*/
-            }
-        });
+            } //onClick View end
+        }); //onClicklistener end
 
 
-    }
+    }//on create end
+
+
+
 
     public void createAccount(){
         mAuth.createUserWithEmailAndPassword(email, password)
@@ -129,20 +131,6 @@ public class SignUpActivity extends AppCompatActivity {
                                                 startActivity(new Intent(getApplicationContext(), HomepageActivity.class));
                                                 //Now save the information in the firebase firestore
 
-
-
-/*                                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                                            @Override
-                                                            public void onSuccess(DocumentReference documentReference) {
-                                                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                                                            }
-                                                        })
-                                                        .addOnFailureListener(new OnFailureListener() {
-                                                            @Override
-                                                            public void onFailure(@NonNull Exception e) {
-                                                                Log.w(TAG, "Error adding document", e);
-                                                            }
-                                                        });*/
 
 
 
@@ -186,4 +174,4 @@ public class SignUpActivity extends AppCompatActivity {
 
 
 
-}
+} // class end
