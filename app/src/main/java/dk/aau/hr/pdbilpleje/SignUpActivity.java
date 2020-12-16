@@ -40,9 +40,14 @@ public class SignUpActivity extends AppCompatActivity {
     private final static String TAG = "SignUpActivity";
     public FirebaseFirestore fStore;
     public FirebaseAuth mAuth;
+    public FirebaseUser fUser;
     private String userID;
     private TextView mExistingUser, mError;
-    String email, password, phoneNumber;
+    String email, password, phoneNumber, passwordRepeat;
+
+    private static final String KEY_EMAIL = "Email";
+    private static final String KEY_PASSWORD = "Email";
+
 
 
 
@@ -50,10 +55,18 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-
+/*
         //Instanstiating the firebase
         mAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();*/
+
+
+        userID = fUser.getUid();
+
+
+        mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
+
 
         //Assigning the textfields
         mEmailEt            = findViewById(R.id.textInputEmail2);
@@ -69,33 +82,18 @@ public class SignUpActivity extends AppCompatActivity {
                 //we assign the values from the user into Strings
                 email = mEmailEt.getText().toString();
                 password = mPasswordEt.getText().toString();
+                passwordRepeat = mRepeatPasswordEt.getText().toString();
                 //phoneNumber = mPhoneNumberEt.getText().toString();
 
-                // Create a new user with a first and last name
-                Map<String, Object> user = new HashMap<>();
-                user.put("first", "Ada");
-                user.put("last", "Lovelace");
-                user.put("born", 1815);
-
-                // Add a new document with a generated ID
-                fStore.collection("users")
-                        .add(user)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.w(TAG, "Error adding document", e);
-                            }
-                        });
 
 
-                //Call the method to create the account
-                createAccount();
+                if (!password.equals(passwordRepeat)) {
+                    Toast.makeText(SignUpActivity.this,"Passwords do not match.", Toast.LENGTH_SHORT).show();
+                } else {
+                    createAccount();
+                }
+
+
             }
         });
 
@@ -116,10 +114,9 @@ public class SignUpActivity extends AppCompatActivity {
                                                 Toast.makeText(SignUpActivity.this, "registration successful", Toast.LENGTH_SHORT).show();
                                                 startActivity(new Intent(getApplicationContext(), HomepageActivity.class));
                                                 //Now save the information in the firebase firestore
-                                                mAuth = FirebaseAuth.getInstance();
-                                                fStore = FirebaseFirestore.getInstance();
 
-                                                // Create a new user with a first and last name
+
+
                                                 Map<String, Object> user = new HashMap<>();
                                                 user.put("first", "Ada");
                                                 user.put("last", "Lovelace");
@@ -127,8 +124,10 @@ public class SignUpActivity extends AppCompatActivity {
 
                                                 // Add a new document with a generated ID
                                                 fStore.collection("users")
-                                                        .add(user)
-                                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                                        .add(user);
+
+
+/*                                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                                             @Override
                                                             public void onSuccess(DocumentReference documentReference) {
                                                                 Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
@@ -139,8 +138,7 @@ public class SignUpActivity extends AppCompatActivity {
                                                             public void onFailure(@NonNull Exception e) {
                                                                 Log.w(TAG, "Error adding document", e);
                                                             }
-                                                        });
-
+                                                        });*/
 
 
 
