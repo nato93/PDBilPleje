@@ -33,6 +33,27 @@
     <string name="profil">Min Profil</string>
     <string name="nextButton">Næste ></string>
     <string name="previousButton">Tilbage </string>
+    <string name="home">Home</string>
+    <string name="booking">Booking</string>
+    <string name="settings">Settings</string>
+    <string name="profile">Profile</string>
+    <string name="bestil_tid">bestil tid</string>
+    <string name="næste">Næste ></string>
+    <string name="hvilken_service">Hvilken service?</string>
+    <string name="hvilken_bil">Hvilken bil?</string>
+    <string name="hvilken_addresse">Hvilken addresse?</string>
+    <string name="tilbage"><![CDATA[< tilbage]]></string>
+    <string name="log_ud">log ud</string>
+    <string name="bil_type">Vælg bil type</string>
+    <string name="model">Model</string>
+    <string name="plus">+</string>
+    <string name="tilføj_bil">+ Tilføj Bil</string>
+    <string name="add_address">+ tilføj adresse</string>
+    <string name="vej_navn_nummer">Vej navn + nummer</string>
+    <string name="post_nummer">Post nr.</string>
+    <string name="by">By</string>
+    <string name="indtast_adresse">Indtast adresse</string>
+    <string name="v_lg_dato">vælg dato</string>
 
     <string-array name="service">
         <item>Hvilken service?</item>

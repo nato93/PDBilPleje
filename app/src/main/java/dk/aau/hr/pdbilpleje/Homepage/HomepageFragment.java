@@ -27,24 +27,12 @@ public class HomepageFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_homepage, container, false);
 
-        mNewsImageView = view.findViewById(R.id.newsImageview);
-        mNewsImageView2 = view.findViewById(R.id.newsImageview2);
-        mNewsImageView3 = view.findViewById(R.id.newsImageview3);
 
         mSettingsImageView = view.findViewById(R.id.settingsView);
 
         Log.d(TAG, "Velkommen");
 
-        //gaugeInfoText = view.findViewById(R.id.mInfoText);
 
-        //gaugeInfoText = MainPageFragment.infoText;
-
-        //CharSequence input = gaugeText.toString();
-        //updateTextView(input);
-
-        //gaugeText.setText(R.string.mCoInfo);
-        //CharSequence input = gaugeText.getText();
-        //updateTextView(gaugeText.toString());
         return view;
     }
 
