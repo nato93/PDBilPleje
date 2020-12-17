@@ -42,7 +42,7 @@ public class HomepageActivity extends AppCompatActivity {
         mBookingView = findViewById(R.id.page_4);*/
 
 
-        Toast.makeText(this, "It worked mothersucka!", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "It worked mothersucka!", Toast.LENGTH_SHORT).show();
 
         mBotNavView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

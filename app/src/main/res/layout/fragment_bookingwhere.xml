@@ -6,21 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/left_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.10" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/right_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.90" />
-
     <com.google.android.gms.maps.MapView
         android:id="@+id/bookingMapView"
         android:layout_width="0dp"
@@ -31,7 +28,6 @@
         app:layout_constraintLeft_toLeftOf="@id/left_guideline"
         app:layout_constraintRight_toRightOf="@id/right_guideline"
         app:layout_constraintTop_toBottomOf="@+id/addAddressButton" />
-
     <Button
         android:id="@+id/bookingNextButton"
         android:layout_width="0dp"
@@ -42,7 +38,6 @@
         app:layout_constraintRight_toLeftOf="@id/right_guideline"
         app:layout_constraintLeft_toRightOf="@id/middle_guideline"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
     <Button
         android:id="@+id/bookingPreviousButton"
         android:layout_width="0dp"
@@ -54,8 +49,6 @@
         app:layout_constraintLeft_toRightOf="@id/left_guideline"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
@@ -66,15 +59,12 @@
         app:layout_constraintLeft_toLeftOf="@id/left_guideline"
         app:layout_constraintRight_toRightOf="@id/right_guideline"
         app:layout_constraintTop_toTopOf="parent">
-
         <AutoCompleteTextView
             android:id="@+id/filled_exposed_dropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none" />
-
     </com.google.android.material.textfield.TextInputLayout>
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/addAddressButton"
         android:layout_width="0dp"
@@ -87,12 +77,10 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/middle_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
