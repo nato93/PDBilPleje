@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <FrameLayout
         android:id="@+id/mainPageLayout"
         android:layout_width="match_parent"
@@ -14,9 +13,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
-    </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -29,6 +25,5 @@
         app:menu="@menu/bottom_navigation_menu"
         app:itemIconTint="#ACACAC"
         app:itemTextColor="#ACACAC"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

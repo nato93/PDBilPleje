@@ -28,6 +28,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -85,15 +86,23 @@ public class SignUpActivity extends AppCompatActivity {
                 passwordRepeat = mRepeatPasswordEt.getText().toString();
                 //phoneNumber = mPhoneNumberEt.getText().toString();
 
-                createAccount();
+                //createAccount();
 
 
                 //ADD THE STUFF TO THE CLOUD FIRESTORE
                 //Create a HashMap where you store the user data
 
+
+                //Toast.makeText(SignUpActivity.this, userId, Toast.LENGTH_SHORT).show();
+
+
+
+
+
                 userId = fUser.getUid();
                 Map<String, Object> user = new HashMap<>();
-                user.put("name", "email");
+                user.put("name", email);
+
 
                 // Add a new document with a generated ID
                 fStore.collection("users").add(user)
@@ -111,6 +120,8 @@ public class SignUpActivity extends AppCompatActivity {
                         return;
                     }
                 });
+
+
 
 
 
@@ -141,7 +152,7 @@ public class SignUpActivity extends AppCompatActivity {
                                                 //User is successfully registered and logged in
                                                 //start Profile Activity here
                                                 Toast.makeText(SignUpActivity.this, "registration successful", Toast.LENGTH_SHORT).show();
-                                               // startActivity(new Intent(getApplicationContext(), HomepageActivity.class));
+                                                startActivity(new Intent(getApplicationContext(), HomepageActivity.class));
 
                                             } else {
                                                 Toast.makeText(SignUpActivity.this, "Couldn't register, try again", Toast.LENGTH_SHORT).show();

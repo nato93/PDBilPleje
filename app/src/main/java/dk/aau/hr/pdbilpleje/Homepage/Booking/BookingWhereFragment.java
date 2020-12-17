@@ -27,7 +27,9 @@ import java.util.ArrayList;
 import dk.aau.hr.pdbilpleje.R;
 
 
-public class BookingWhereFragment extends Fragment implements OnMapReadyCallback {
+public class BookingWhereFragment extends Fragment  {
+
+    //implements OnMapReadyCallback
 
     public MapView mMapView;
     GoogleMap map;
@@ -49,8 +51,8 @@ public class BookingWhereFragment extends Fragment implements OnMapReadyCallback
         addresses.add("KBH Rådhuspladsen cap");
         mBookingNextButton = view.findViewById(R.id.NæsteButton);
         mAddAddressButton = view.findViewById(R.id.addAddressButton);
-        mMapView = view.findViewById(R.id.bookingMapView);
-        initGoogleMap(savedInstanceState);
+        //mMapView = view.findViewById(R.id.bookingMapView);
+        //initGoogleMap(savedInstanceState);
 
 
 
@@ -147,7 +149,7 @@ public class BookingWhereFragment extends Fragment implements OnMapReadyCallback
         mEditTextCity = dialog.findViewById(R.id.editTextCity);
     }
 
-    private void initGoogleMap(Bundle savedInstanceState){
+/*    private void initGoogleMap(Bundle savedInstanceState){
         // *** IMPORTANT ***
         // MapView requires that the Bundle you pass contain _ONLY_ MapView SDK
         // objects or sub-Bundles.
@@ -159,10 +161,10 @@ public class BookingWhereFragment extends Fragment implements OnMapReadyCallback
         mMapView.onCreate(mapViewBundle);
 
         mMapView.getMapAsync(this);
-    }
+    }*/
 
 
-
+/*
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -228,7 +230,7 @@ public class BookingWhereFragment extends Fragment implements OnMapReadyCallback
     public void onLowMemory() {
         super.onLowMemory();
         mMapView.onLowMemory();
-    }
+    }*/
 }
 
 

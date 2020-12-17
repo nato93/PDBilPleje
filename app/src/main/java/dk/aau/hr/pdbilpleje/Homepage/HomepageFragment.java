@@ -28,7 +28,7 @@ public class HomepageFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_homepage, container, false);
 
 
-        mSettingsImageView = view.findViewById(R.id.settingsView);
+        //mSettingsImageView = view.findViewById(R.id.settingsView);
 
         Log.d(TAG, "Velkommen");
 
