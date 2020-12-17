@@ -39,15 +39,23 @@ public class SignUpActivity extends AppCompatActivity {
     public Button mSignUpButton;
     private final static String TAG = "SignUpActivity";
     FirebaseFirestore fStore;
-    private FirebaseAuth mAuth;
+    public FirebaseAuth mAuth;
+    // Collection references
+    //public CollectionReference collectionUsers = fStore.collection("users");
+    public String userId;
+
     public FirebaseUser fUser;
-    private String userID;
     private TextView mExistingUser, mError;
     public String email, password, phoneNumber, passwordRepeat;
 
     @Override
     public void onStart() {
         super.onStart();
+        fUser = FirebaseAuth.getInstance().getCurrentUser();
+        mAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+        userId = fUser.getUid();
+
         // Check if user is signed in (non-null) and update UI accordingly.
        // FirebaseUser currentUser = mAuth.getCurrentUser();
     }
@@ -58,9 +66,6 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         //instantiating the firebase
-        //userID = fUser.getUid();
-        mAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
 
         //Assigning the textfields
         mEmailEt            = findViewById(R.id.textInputEmail2);
@@ -82,12 +87,17 @@ public class SignUpActivity extends AppCompatActivity {
 
                 createAccount();
 
+
+                //ADD THE STUFF TO THE CLOUD FIRESTORE
                 //Create a HashMap where you store the user data
-/*                Map<String, String> user = new HashMap<>();
+
+                userId = fUser.getUid();
+                Map<String, Object> user = new HashMap<>();
                 user.put("name", "email");
 
                 // Add a new document with a generated ID
-                fStore.collection("users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                fStore.collection("users").add(user)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(getApplicationContext(), "registration successful", Toast.LENGTH_SHORT).show();
@@ -100,20 +110,23 @@ public class SignUpActivity extends AppCompatActivity {
                         Toast.makeText(SignUpActivity.this, "registration didnt work!", Toast.LENGTH_SHORT).show();
                         return;
                     }
-                });*/
+                });
+
+
+
+
+                //Line 108 is to check if password are equal
 
 /*                if (!password.equals(passwordRepeat)) {
                     Toast.makeText(SignUpActivity.this,"Passwords do not match.", Toast.LENGTH_SHORT).show();
                 } else {
                     createAccount();
                 }*/
-            } //onClick View end
-        }); //onClicklistener end
 
 
+            }
+        });
     }//on create end
-
-
 
 
     public void createAccount(){
@@ -128,11 +141,7 @@ public class SignUpActivity extends AppCompatActivity {
                                                 //User is successfully registered and logged in
                                                 //start Profile Activity here
                                                 Toast.makeText(SignUpActivity.this, "registration successful", Toast.LENGTH_SHORT).show();
-                                                startActivity(new Intent(getApplicationContext(), HomepageActivity.class));
-                                                //Now save the information in the firebase firestore
-
-
-
+                                               // startActivity(new Intent(getApplicationContext(), HomepageActivity.class));
 
                                             } else {
                                                 Toast.makeText(SignUpActivity.this, "Couldn't register, try again", Toast.LENGTH_SHORT).show();
