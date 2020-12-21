@@ -43,7 +43,7 @@
                 android:ems="10"
                 android:gravity="center_vertical"
                 android:inputType="textPersonName"
-                android:text="Hvor" />
+                android:text="Tidspunkt" />
 
             <EditText
                 android:id="@+id/editText2"
@@ -53,7 +53,8 @@
                 android:ems="10"
                 android:gravity="center_vertical"
                 android:hint="Tlf nummer"
-                android:inputType="number" />
+                android:inputType="number"
+                android:text="Tlf nummer" />
 
             <EditText
                 android:id="@+id/editText4"
@@ -63,7 +64,7 @@
                 android:ems="10"
                 android:gravity="center_vertical"
                 android:inputType="textPersonName"
-                android:text="Name" />
+                android:text="Navn" />
 
             <EditText
                 android:id="@+id/editText"
@@ -72,8 +73,8 @@
                 android:layout_marginTop="20sp"
                 android:ems="10"
                 android:gravity="center_vertical"
-                android:hint="Adresse"
-                android:inputType="textPostalAddress" />
+                android:inputType="textPostalAddress"
+                android:text="Addresse" />
 
             <EditText
                 android:id="@+id/editText5"
@@ -94,7 +95,8 @@
                 android:ems="10"
                 android:gravity="center_vertical"
                 android:hint="Email"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:text="Email" />
 
         </LinearLayout>
     </ScrollView>
