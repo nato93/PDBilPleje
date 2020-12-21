@@ -86,7 +86,7 @@ public class SignUpActivity extends AppCompatActivity {
                 passwordRepeat = mRepeatPasswordEt.getText().toString();
                 //phoneNumber = mPhoneNumberEt.getText().toString();
 
-                //createAccount();
+                createAccount();
 
 
                 //ADD THE STUFF TO THE CLOUD FIRESTORE
@@ -96,6 +96,7 @@ public class SignUpActivity extends AppCompatActivity {
                 //Toast.makeText(SignUpActivity.this, userId, Toast.LENGTH_SHORT).show();
 
 
+/*
 
 
 
@@ -122,6 +123,7 @@ public class SignUpActivity extends AppCompatActivity {
                 });
 
 
+*/
 
 
 
