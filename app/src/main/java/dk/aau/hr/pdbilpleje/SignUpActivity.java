@@ -36,7 +36,7 @@ import dk.aau.hr.pdbilpleje.Homepage.HomepageActivity;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    public EditText mEmailEt,mRepeatPasswordEt, mPasswordEt, mPhoneNumberEt;
+    public EditText mEmailEt,mRepeatPasswordEt, mPasswordEt, mPhoneNumberEt,mNameEt,mLastNameEt,mPostcodeEt;
     public Button mSignUpButton;
     private final static String TAG = "SignUpActivity";
     FirebaseFirestore fStore;
@@ -47,7 +47,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     public FirebaseUser fUser;
     private TextView mExistingUser, mError;
-    public String email, password, phoneNumber, passwordRepeat;
+    public String email, password, phoneNumber, passwordRepeat, name, lastName, postCode;
 
     @Override
     public void onStart() {
@@ -55,7 +55,7 @@ public class SignUpActivity extends AppCompatActivity {
         fUser = FirebaseAuth.getInstance().getCurrentUser();
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-        userId = fUser.getUid();
+//        userId = fUser.getUid();
 
         // Check if user is signed in (non-null) and update UI accordingly.
        // FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -70,6 +70,9 @@ public class SignUpActivity extends AppCompatActivity {
 
         //Assigning the textfields
         mEmailEt            = findViewById(R.id.textInputEmail2);
+        mNameEt             = findViewById(R.id.textInputName);
+        mLastNameEt             = findViewById(R.id.textInputLastName);
+        mPostcodeEt            = findViewById(R.id.textInputPostcode);
         mPasswordEt         = findViewById(R.id.textInputPassword2);
         mRepeatPasswordEt   = findViewById(R.id.textInputRepeatPassword2);
         mSignUpButton       = findViewById(R.id.signupButton);
@@ -84,7 +87,10 @@ public class SignUpActivity extends AppCompatActivity {
                 email = mEmailEt.getText().toString();
                 password = mPasswordEt.getText().toString();
                 passwordRepeat = mRepeatPasswordEt.getText().toString();
-                //phoneNumber = mPhoneNumberEt.getText().toString();
+                phoneNumber = mPhoneNumberEt.getText().toString();
+                name = mNameEt.getText().toString();
+                lastName = mLastNameEt.getText().toString();
+                postCode = mPostcodeEt.getText().toString();
                 //fStore.collection("users").document("new-city-id");
 
                 createAccount();
@@ -92,13 +98,15 @@ public class SignUpActivity extends AppCompatActivity {
                 //ADD THE STUFF TO THE CLOUD FIRESTORE
                 //Create a HashMap where you store the user data
                 //Toast.makeText(SignUpActivity.this, userId, Toast.LENGTH_SHORT).show();
-/*
-                userId = fUser.getUid();
-                Map<String, Object> user = new HashMap<>();
-                user.put("name", email);
+
+                //userId = fUser.getUid();
+              /*  Map<String, Object> user = new HashMap<>();
+                user.put("name", email);*/
 
                 // Add a new document with a generated ID
-                fStore.collection("users").add(user)
+
+
+               /* fStore.collection("users").document(userId).set(user)
                         .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
@@ -112,9 +120,9 @@ public class SignUpActivity extends AppCompatActivity {
                         Toast.makeText(SignUpActivity.this, "registration didnt work!", Toast.LENGTH_SHORT).show();
                         return;
                     }
-                });
+                });*/
 
-*/
+
                 //Line 108 is to check if password are equal
 
 /*                if (!password.equals(passwordRepeat)) {
@@ -140,6 +148,32 @@ public class SignUpActivity extends AppCompatActivity {
                                             if (task.isSuccessful()) {
                                                 //User is successfully registered and logged in
                                                 //start Profile Activity here
+                                                Map<String, Object> user = new HashMap<>();
+                                                user.put("email", email);
+                                                user.put("name", name);
+                                                user.put("lastname", lastName);
+                                                user.put("phonenumber", phoneNumber);
+                                                user.put("postalcode", postCode);
+
+                                                fStore.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                                        .set(user)
+                                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                            @Override
+                                                            public void onSuccess(Void aVoid) {
+                                                                Log.d(TAG, "DocumentSnapshot successfully written!");
+                                                                Toast.makeText(getApplicationContext(), "registration successful", Toast.LENGTH_SHORT).show();
+                                                                startActivity(new Intent(getApplicationContext(), HomepageActivity.class));
+                                                            }
+                                                        })
+                                                        .addOnFailureListener(new OnFailureListener() {
+                                                            @Override
+                                                            public void onFailure(@NonNull Exception e) {
+                                                                Log.w(TAG, "Error writing document", e);
+                                                                Toast.makeText(SignUpActivity.this, "registration didnt work!", Toast.LENGTH_SHORT).show();
+                                                                return;
+                                                            }
+                                                        });
+
                                                 Toast.makeText(SignUpActivity.this, "registration successful", Toast.LENGTH_SHORT).show();
 
                                                 startActivity(new Intent(getApplicationContext(), HomepageActivity.class));
