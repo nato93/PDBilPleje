@@ -35,11 +35,11 @@ public class FrontPageActivity extends AppCompatActivity {
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
-        if(currentUser != null){
+    /*    if(currentUser != null){
             Intent intent = new Intent(FrontPageActivity.this, HomepageActivity.class);
             startActivity(intent);
         }
-
+*/
 
     }
 

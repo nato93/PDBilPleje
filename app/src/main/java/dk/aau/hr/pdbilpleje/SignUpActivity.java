@@ -85,6 +85,7 @@ public class SignUpActivity extends AppCompatActivity {
                 password = mPasswordEt.getText().toString();
                 passwordRepeat = mRepeatPasswordEt.getText().toString();
                 //phoneNumber = mPhoneNumberEt.getText().toString();
+                //fStore.collection("users").document("new-city-id");
 
                 createAccount();
 
@@ -140,6 +141,7 @@ public class SignUpActivity extends AppCompatActivity {
                                                 //User is successfully registered and logged in
                                                 //start Profile Activity here
                                                 Toast.makeText(SignUpActivity.this, "registration successful", Toast.LENGTH_SHORT).show();
+
                                                 startActivity(new Intent(getApplicationContext(), HomepageActivity.class));
 
                                             } else {
