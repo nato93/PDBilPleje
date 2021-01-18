@@ -32,6 +32,15 @@ public class FrontPageActivity extends AppCompatActivity {
         //FirebaseUser currentUser = mAuth.getCurrentUser();
         //updateUI(currentUser);
         //if current user is signed in change to homepage
+
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if(currentUser != null){
+            Intent intent = new Intent(FrontPageActivity.this, HomepageActivity.class);
+            startActivity(intent);
+        }
+
+
     }
 
 

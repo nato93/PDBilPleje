@@ -36,9 +36,9 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
+
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-        //updateUI(currentUser);
+
     }
 
 
@@ -53,20 +53,14 @@ public class LoginActivity extends AppCompatActivity {
         mEmailEt = findViewById(R.id.textInputEmail);
         mPasswordEt = findViewById(R.id.textInputPassword);
         mLoginButton = findViewById(R.id.loginButton);
-        //mFBloginButton = findViewById(R.id.fb_login_button);
         mLogoImageView = findViewById(R.id.imageViewLogo2);
-        //mLogoImageView.setImageResource(R.drawable.pdbilplejelogo);
-
-
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                //uncomment login() and delete the below intent  if you want login to work again
+                //uncomment login()  if you want login to work again
                 Login();
-                //Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
-                //startActivity(intent);
 
             }
         });

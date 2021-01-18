@@ -88,22 +88,13 @@ public class SignUpActivity extends AppCompatActivity {
 
                 createAccount();
 
-
                 //ADD THE STUFF TO THE CLOUD FIRESTORE
                 //Create a HashMap where you store the user data
-
-
                 //Toast.makeText(SignUpActivity.this, userId, Toast.LENGTH_SHORT).show();
-
-
 /*
-
-
-
                 userId = fUser.getUid();
                 Map<String, Object> user = new HashMap<>();
                 user.put("name", email);
-
 
                 // Add a new document with a generated ID
                 fStore.collection("users").add(user)
@@ -122,12 +113,7 @@ public class SignUpActivity extends AppCompatActivity {
                     }
                 });
 
-
 */
-
-
-
-
                 //Line 108 is to check if password are equal
 
 /*                if (!password.equals(passwordRepeat)) {
