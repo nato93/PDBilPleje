@@ -32,9 +32,7 @@ public class FrontPageActivity extends AppCompatActivity {
         //FirebaseUser currentUser = mAuth.getCurrentUser();
         //updateUI(currentUser);
         //if current user is signed in change to homepage
-
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-
+        //FirebaseUser currentUser = mAuth.getCurrentUser();
     /*    if(currentUser != null){
             Intent intent = new Intent(FrontPageActivity.this, HomepageActivity.class);
             startActivity(intent);
@@ -43,18 +41,13 @@ public class FrontPageActivity extends AppCompatActivity {
 
     }
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_front_page);
 
-
         mLoginButton = findViewById(R.id.loginButton);
         mTextViewSignUp = findViewById(R.id.textViewSignUp);
-
-
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
