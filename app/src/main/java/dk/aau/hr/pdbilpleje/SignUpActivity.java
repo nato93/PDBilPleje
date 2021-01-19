@@ -97,10 +97,6 @@ public class SignUpActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
-                        if (!validateForm()) {
-                            return;
-                        }
-
 
                         try {
                                             //check if successful
