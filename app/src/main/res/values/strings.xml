@@ -12,7 +12,8 @@
 
     <!-- Exception Strings -->
     <string name="weak_password_exception">Password needs to be at least 6 characters.</string>
-    <string name="wrong_email_format">Pleave enter a valid email.</string>
+    <string name="wrong_email_format">Please enter a valid email.</string>
+    <string name="error_text">couldn not register</string>
     <string name="email_is_in_use">The entered email is already in use.</string>
 
 

@@ -39,14 +39,12 @@ public class SignUpActivity extends AppCompatActivity {
     public EditText mEmailEt,mRepeatPasswordEt, mPasswordEt, mPhoneNumberEt,mNameEt,mLastNameEt,mPostcodeEt;
     public Button mSignUpButton;
     private final static String TAG = "SignUpActivity";
+
+    // Database stuff
+    public String userId;
+    public FirebaseUser fUser;
     FirebaseFirestore fStore;
     public FirebaseAuth mAuth;
-    // Collection references
-    //public CollectionReference collectionUsers = fStore.collection("users");
-    public String userId;
-
-    public FirebaseUser fUser;
-    private TextView mExistingUser, mError;
     public String email, password, phoneNumber, passwordRepeat, name, lastName, postCode;
 
     @Override
@@ -55,18 +53,12 @@ public class SignUpActivity extends AppCompatActivity {
         fUser = FirebaseAuth.getInstance().getCurrentUser();
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-//        userId = fUser.getUid();
-
-        // Check if user is signed in (non-null) and update UI accordingly.
-       // FirebaseUser currentUser = mAuth.getCurrentUser();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-
-        //instantiating the firebase
 
         //Assigning the textfields
         mEmailEt            = findViewById(R.id.textInputEmail2);
@@ -91,50 +83,12 @@ public class SignUpActivity extends AppCompatActivity {
                 name = mNameEt.getText().toString();
                 lastName = mLastNameEt.getText().toString();
                 postCode = mPostcodeEt.getText().toString();
-                //fStore.collection("users").document("new-city-id");
 
                 createAccount();
 
-                //ADD THE STUFF TO THE CLOUD FIRESTORE
-                //Create a HashMap where you store the user data
-                //Toast.makeText(SignUpActivity.this, userId, Toast.LENGTH_SHORT).show();
-
-                //userId = fUser.getUid();
-              /*  Map<String, Object> user = new HashMap<>();
-                user.put("name", email);*/
-
-                // Add a new document with a generated ID
-
-
-               /* fStore.collection("users").document(userId).set(user)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(getApplicationContext(), "registration successful", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), HomepageActivity.class));
-
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(SignUpActivity.this, "registration didnt work!", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                });*/
-
-
-                //Line 108 is to check if password are equal
-
-/*                if (!password.equals(passwordRepeat)) {
-                    Toast.makeText(SignUpActivity.this,"Passwords do not match.", Toast.LENGTH_SHORT).show();
-                } else {
-                    createAccount();
-                }*/
-
-
             }
         });
-    }//on create end
+    }
 
 
     public void createAccount(){
@@ -143,7 +97,12 @@ public class SignUpActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                        try {
+                        if (!validateForm()) {
+                            return;
+                        }
+
+
+                        try {
                                             //check if successful
                                             if (task.isSuccessful()) {
                                                 //User is successfully registered and logged in
@@ -188,20 +147,21 @@ public class SignUpActivity extends AppCompatActivity {
                                                     throw task.getException();
                                                 } catch(FirebaseAuthWeakPasswordException err) {
 
-                                                    mError.setText(R.string.weak_password_exception);
-                                                    mError.setTextColor(Color.RED);
+                                                    Toast.makeText(SignUpActivity.this,"Password is too short, min. 6 characters", Toast.LENGTH_SHORT).show();
+                                                    //mError.setTextColor(Color.RED);
                                                     mPasswordEt.requestFocus();
+
 
                                                 } catch(FirebaseAuthInvalidCredentialsException err) {
 
-                                                    mError.setText(R.string.wrong_email_format);
-                                                    mError.setTextColor(Color.RED);
+                                                    Toast.makeText(SignUpActivity.this,"Please enter a valid email.",
+                                                            Toast.LENGTH_SHORT).show();
                                                     mEmailEt.requestFocus();
+
 
                                                 } catch(FirebaseAuthUserCollisionException err) {
 
-                                                    mError.setText(R.string.email_is_in_use);
-                                                    mError.setTextColor(Color.RED);
+                                                    Toast.makeText(SignUpActivity.this,"The entered email is already in use.", Toast.LENGTH_SHORT).show();
                                                     mEmailEt.requestFocus();
 
                                                 } catch(Exception err) {
@@ -215,6 +175,46 @@ public class SignUpActivity extends AppCompatActivity {
                                 });
     }
 
+
+
+
+    //Method to check if all the fields have been filled out
+    private boolean validateForm() {
+
+        boolean valid;
+
+        if (mEmailEt.getText().toString().isEmpty() || mPasswordEt.getText().toString().isEmpty() ||
+                mRepeatPasswordEt.getText().toString().isEmpty() || mNameEt.getText().toString().isEmpty() || mPhoneNumberEt.getText().toString().isEmpty()) {
+
+            valid = false;
+
+            if (mEmailEt.length() == 0) {
+                mEmailEt.requestFocus();
+                Toast.makeText(SignUpActivity.this,"Please enter a name.",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            if (mPasswordEt.length() == 0) {
+                mPasswordEt.requestFocus();
+                Toast.makeText(SignUpActivity.this,"Please enter a password.",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            if (mRepeatPasswordEt.length() == 0) {
+                mRepeatPasswordEt.requestFocus();
+                mRepeatPasswordEt.setError("Please enter an address.");
+            }
+
+
+        } else { valid = true; }
+
+        if (!password.equals(passwordRepeat)) {
+            Toast.makeText(SignUpActivity.this, "Passwords do not match.", Toast.LENGTH_SHORT).show();
+            valid = false;
+        }
+
+        return valid;
+    }
 
 
 

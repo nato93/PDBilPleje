@@ -22,6 +22,7 @@ public class FrontPageActivity extends AppCompatActivity {
     public Button mLoginButton;
     public TextView mTextViewSignUp;
 
+
     private FirebaseAuth mAuth;
 
 
