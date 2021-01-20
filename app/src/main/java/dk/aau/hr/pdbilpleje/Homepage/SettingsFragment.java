@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.w3c.dom.Text;
 
@@ -21,6 +23,7 @@ public class SettingsFragment extends Fragment {
 
 
     public TextView mLogUdTextView;
+    public Switch mTwoFactorSwitch;
 
 
     @Override
@@ -31,7 +34,24 @@ public class SettingsFragment extends Fragment {
 //aye
 
         mLogUdTextView = view.findViewById(R.id.logUdTextView);
+        mTwoFactorSwitch = view.findViewById(R.id.twoFactorSwitch);
 
+        Boolean switchState = mTwoFactorSwitch.isChecked();
+
+
+
+
+        FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
+
+
+
+
+
+        if (switchState == true){
+            // set the 2fa to true in the database
+        } else {
+            // set the 2fa to false in the database
+        }
 
 
         mLogUdTextView.setOnClickListener(new View.OnClickListener() {

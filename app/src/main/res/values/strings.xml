@@ -7,8 +7,12 @@
     <string name="emailTextView">Email</string>
     <string name="passwordTextView">Password</string>
     <string name="ignore">ignore</string>
+
+
+    <!-- Settings Strings -->
     <string name="indstillinger">Indstillinger</string>
     <string name="logUdTextView">Log Ud</string>
+    <string name="twoFactorSwitch">Slå to-faktor godkendelse til</string>
 
 
 
