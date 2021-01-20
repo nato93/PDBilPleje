@@ -174,7 +174,6 @@ public class SignUpActivity extends AppCompatActivity {
 
 
 
-
     //Method to check if all the fields have been filled out
     private boolean validateForm() {
 
@@ -202,7 +201,6 @@ public class SignUpActivity extends AppCompatActivity {
                 mRepeatPasswordEt.setError("Please enter an address.");
             }
 
-
         } else { valid = true; }
 
         if (!password.equals(passwordRepeat)) {
@@ -212,7 +210,4 @@ public class SignUpActivity extends AppCompatActivity {
 
         return valid;
     }
-
-
-
 } // class end

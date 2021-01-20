@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.w3c.dom.Text;
 
@@ -42,23 +43,32 @@ public class SettingsFragment extends Fragment {
 
 
 
-        FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
+        final FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
 
         mTwoFactorSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                 Boolean switchState = mTwoFactorSwitch.isChecked();
+                Boolean switchState = mTwoFactorSwitch.isChecked();
+
 
                 if (switchState == true){
                     // set the 2fa to true in the database
+
                     Toast.makeText(getActivity(), "2-Faktor godkendelse er slået til!",
                             Toast.LENGTH_SHORT).show();
+
+
+                    FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance()
+                            .getCurrentUser().getUid()).update("2fa", true);
+
 
                 } else {
                     // set the 2fa to false in the database
                     Toast.makeText(getActivity(), "2-Faktor godkendelse er slået fra!",
                             Toast.LENGTH_SHORT).show();
+                    FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance()
+                            .getCurrentUser().getUid()).update("2fa", false);
                 }
             }
         });
