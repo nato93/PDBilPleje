@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import org.w3c.dom.Text;
 
 import dk.aau.hr.pdbilpleje.FrontPageActivity;
@@ -38,8 +40,7 @@ public class SettingsFragment extends Fragment {
 
                 //Sign-out of the currently logged in user.
 
-
-
+                FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(getActivity(), FrontPageActivity.class);
                 startActivity(intent);
             }
