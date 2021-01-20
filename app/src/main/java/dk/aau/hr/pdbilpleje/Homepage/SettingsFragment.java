@@ -26,7 +26,6 @@ public class SettingsFragment extends Fragment {
 
     public TextView mLogUdTextView;
     public Switch mTwoFactorSwitch;
-    public Boolean switchState = mTwoFactorSwitch.isChecked();
 
 
     @Override
@@ -48,6 +47,11 @@ public class SettingsFragment extends Fragment {
         mTwoFactorSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                Boolean switchState = mTwoFactorSwitch.isChecked();
+
+
+
                 if (switchState == true){
                     // set the 2fa to true in the database
                     Toast.makeText(getActivity(), "2-Faktor godkendelse er slået til!",
