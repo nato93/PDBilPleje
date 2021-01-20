@@ -63,19 +63,13 @@ public class LoginActivity extends AppCompatActivity {
         mLoginButton = findViewById(R.id.loginButton);
         mLogoImageView = findViewById(R.id.imageViewLogo2);
 
-
-
-
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 //uncomment login()  if you want login to work again
                 Login();
-
             }
         });
-
     }
 
     public void Login(){
@@ -132,14 +126,11 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                             System.out.println("Sign-in Failed: " + task.getException().getMessage());
-
                             Toast.makeText(LoginActivity.this, "couldn't login", Toast.LENGTH_SHORT).show();
-
                         }
                     }
                 });
     }
-
 
     //This method sends the code to the users phone number
     private void sendVerificationCodeToUser (String phoneNumber){
@@ -185,8 +176,5 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
         startActivity(intent);
     }
-
-
-
 
 }

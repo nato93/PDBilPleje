@@ -20,13 +20,9 @@ public class VerificationActivity extends AppCompatActivity {
     public Button mVerificationButton;
     public String userTypedCode;
 
-
     @Override
     public void onStart() {
         super.onStart();
-
-
-
     }
 
     @Override
@@ -37,23 +33,17 @@ public class VerificationActivity extends AppCompatActivity {
         //Assigning the textfields
         mVerificationEt            = findViewById(R.id.textInputEmail2);
         mVerificationButton             = findViewById(R.id.verifyButton);
-
+        //Instantiating a new object of Loginactivity to use it's methods.
         final LoginActivity loginActivity = new LoginActivity();
 
         mVerificationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 userTypedCode = mVerificationEt.toString();
                 //Check if the verification code send to the phone is equal to the one in mVerificationEt
-
                 loginActivity.verifyCode(userTypedCode);
-
             }
         });
-
-
-
         }
     }
 
