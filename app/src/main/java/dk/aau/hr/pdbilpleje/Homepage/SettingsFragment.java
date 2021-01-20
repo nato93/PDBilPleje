@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ public class SettingsFragment extends Fragment {
 
     public TextView mLogUdTextView;
     public Switch mTwoFactorSwitch;
+    public Boolean switchState = mTwoFactorSwitch.isChecked();
 
 
     @Override
@@ -37,24 +39,29 @@ public class SettingsFragment extends Fragment {
         mLogUdTextView = view.findViewById(R.id.logUdTextView);
         mTwoFactorSwitch = view.findViewById(R.id.twoFactorSwitch);
 
-        Boolean switchState = mTwoFactorSwitch.isChecked();
 
 
 
 
         FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        mTwoFactorSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (switchState == true){
+                    // set the 2fa to true in the database
+                    Toast.makeText(getActivity(), "2-Faktor godkendelse er slået til!",
+                            Toast.LENGTH_SHORT).show();
 
-        if (switchState == true){
-            // set the 2fa to true in the database
-            Toast.makeText(getActivity(), "2-Faktor godkendelse er slået til!",
-                    Toast.LENGTH_SHORT).show();
+                } else {
+                    // set the 2fa to false in the database
+                    Toast.makeText(getActivity(), "2-Faktor godkendelse er slået fra!",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
-        } else {
-            // set the 2fa to false in the database
-            Toast.makeText(getActivity(), "2-Faktor godkendelse er slået fra!",
-                    Toast.LENGTH_SHORT).show();
-        }
+
 
 
         mLogUdTextView.setOnClickListener(new View.OnClickListener() {
