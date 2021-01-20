@@ -8,6 +8,8 @@
     <string name="passwordTextView">Password</string>
     <string name="ignore">ignore</string>
     <string name="indstillinger">Indstillinger</string>
+    <string name="logUdTextView">Log Ud</string>
+
 
 
     <!-- Exception Strings -->
