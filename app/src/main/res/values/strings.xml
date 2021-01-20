@@ -15,6 +15,11 @@
     <string name="twoFactorSwitch">Slå to-faktor godkendelse til</string>
 
 
+    <!-- Phone verification Strings -->
+    <string name="verificatinoTextView">Verification code, ex: 805FHJ</string>
+    <string name="verificationButton">Verify</string>
+
+
 
     <!-- Exception Strings -->
     <string name="weak_password_exception">Password needs to be at least 6 characters.</string>

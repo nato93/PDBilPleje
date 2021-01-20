@@ -42,7 +42,6 @@ public class SettingsFragment extends Fragment {
 
 
 
-
         final FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
 
         mTwoFactorSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
