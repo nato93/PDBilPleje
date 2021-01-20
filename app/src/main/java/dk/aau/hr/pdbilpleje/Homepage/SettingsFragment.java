@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -44,13 +45,15 @@ public class SettingsFragment extends Fragment {
         FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
 
 
-
-
-
         if (switchState == true){
             // set the 2fa to true in the database
+            Toast.makeText(getActivity(), "2-Faktor godkendelse er slået til!",
+                    Toast.LENGTH_SHORT).show();
+
         } else {
             // set the 2fa to false in the database
+            Toast.makeText(getActivity(), "2-Faktor godkendelse er slået fra!",
+                    Toast.LENGTH_SHORT).show();
         }
 
 
