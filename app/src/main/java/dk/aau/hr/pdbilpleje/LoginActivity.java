@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                                         DocumentSnapshot document = task.getResult();
                                         if (document != null){
                                             // assigning the field values from Firestore to our global variables
-                                            UserHasTwoFactor = document.getBoolean("2fa");
+                                            UserHasTwoFactor = document.getBoolean("twofactor");
                                             phoneNo = document.getString("phoneNo");
                                         } else {
                                             //If the document doesn't exist

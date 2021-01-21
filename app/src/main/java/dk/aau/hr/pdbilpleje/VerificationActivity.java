@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit;
 
 public class VerificationActivity extends AppCompatActivity {
 
-
     public EditText mVerificationEt;
     public Button mVerificationButton;
     public String userTypedCode;
