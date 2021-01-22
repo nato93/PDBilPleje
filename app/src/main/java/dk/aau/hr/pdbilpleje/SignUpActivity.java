@@ -109,7 +109,7 @@ public class SignUpActivity extends AppCompatActivity {
                                                 user.put("lastname", lastName);
                                                 user.put("phonenumber", phoneNumber);
                                                 user.put("postalcode", postCode);
-                                                user.put("2fa", false);
+                                                user.put("twofactor", false);
 
                                                 fStore.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                                         .set(user)

@@ -80,45 +80,15 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            //check to see if the user has turned on 2fa
-                            DocumentReference docRef = fStore.collection("users").document(FirebaseAuth.getInstance()
-                                    .getCurrentUser().getUid());
-                            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
 
-                                @Override
-                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                    if (task.isSuccessful()){
-                                        //If the document exists
-                                        DocumentSnapshot document = task.getResult();
-                                        if (document != null){
-                                            // assigning the field values from Firestore to our global variables
-                                            UserHasTwoFactor = document.getBoolean("2fa");
-                                            phoneNo = document.getString("phoneNo");
-                                        } else {
-                                            //If the document doesn't exist
-                                            Log.d("LOGGER", "No such document");
-                                        }
-                                    }
-                                }
-                            });
-
-                            //if the user's 2FA is true send a verification code and go to VerificationActivity.
-
-                            if (UserHasTwoFactor == true){
-                                //send a verification code to the current user
-                                sendVerificationCodeToUser(phoneNo);
-                                //start verification activity
-                                Intent intent = new Intent(LoginActivity.this, VerificationActivity.class);
-                                startActivity(intent);
-                            } else {
                                 // Sign in success
                                 //was only line 122 - 126 inside the task.isSucessful before.
                                 FirebaseUser user = firebaseAuth.getCurrentUser();
                                 Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
                                 startActivity(intent);
-                                Toast.makeText(LoginActivity.this, "Velkommen! " + user.toString(),
-                                        Toast.LENGTH_SHORT).show();
-                            }
+                                //Toast.makeText(LoginActivity.this, "Velkommen! " + user.toString(),
+                                 //       Toast.LENGTH_SHORT).show();
+
 
                         } else {
                             // If sign in fails, display a message to the user.
