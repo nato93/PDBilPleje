@@ -51,6 +51,9 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        //FirebaseUser user = firebaseAuth.getCurrentUser();
+
+
         //mProfileName = view.findViewById(R.id.textViewProfileName);
         mChangeNameButton = view.findViewById(R.id.changeNameButton);
         mChangePasswordButton= view.findViewById(R.id.changePasswordButton);
