@@ -1,30 +1,21 @@
 package dk.aau.hr.pdbilpleje;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import androidx.appcompat.app.AppCompatActivity;
 
-import dk.aau.hr.pdbilpleje.Homepage.HomepageActivity;
-import dk.aau.hr.pdbilpleje.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class FrontPageActivity extends AppCompatActivity {
 
-
-
+    private static final String TAG = "FrontPageActivity";
     public Button mLoginButton;
     public TextView mTextViewSignUp;
-
-
     private FirebaseAuth mAuth;
-
 
     @Override
     public void onStart() {
@@ -52,39 +43,19 @@ public class FrontPageActivity extends AppCompatActivity {
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 Intent intent = new Intent(FrontPageActivity.this, LoginActivity.class);
                 startActivity(intent);
-
             }
         });
-
-
         mTextViewSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 Intent intent = new Intent(FrontPageActivity.this, SignUpActivity.class);
                 startActivity(intent);
-
             }
         });
 
-
-
     }
 
-
-
-
-
-
-
-
-
-
-
-
 }
+

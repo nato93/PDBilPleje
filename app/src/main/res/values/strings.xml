@@ -1,26 +1,18 @@
 <resources>
     <string name="app_name">PDBilPleje</string>
 
+    <string name="m_account_default_web_client_id">355809452873-85bggkrc3o64n3a2hr10bufrhoblvdbv.apps.googleusercontent.com</string>
+
+    <string name="enter_your_card_information_below">Enter Your Card Information Below</string>
+
+
     <string name="loginButton">Login</string>
     <string name="googleSignUpButton">Login med Google</string>
     <string name="registerButton">Opret bruger</string>
     <string name="emailTextView">Email</string>
     <string name="passwordTextView">Password</string>
     <string name="ignore">ignore</string>
-
-
-    <!-- Settings Strings -->
     <string name="indstillinger">Indstillinger</string>
-    <string name="logUdTextView">Log Ud</string>
-    <string name="twoFactorSwitch">Slå to-faktor godkendelse til</string>
-
-
-    <!-- Phone verification Strings -->
-    <string name="verificatinoTextView">Verification code, ex: 805FHJ</string>
-    <string name="verificationButton">Get Verification Code</string>
-    <string name="loginButton2">Login</string>
-    <string name="textProcess">Process text</string>
-
 
 
     <!-- Exception Strings -->
@@ -68,10 +60,6 @@
     <string name="by">By</string>
     <string name="indtast_adresse">Indtast adresse</string>
     <string name="v_lg_dato">vælg dato</string>
-    <string name="gentag_ny_adgangskode">Gentag ny adgangskode</string>
-    <string name="indtast_ny_adgangskode">Indtast ny adgangskode</string>
-    <string name="indtast_gammel_adgangskode">Indtast gammel adgangskode</string>
-    <string name="nyt_navn">Nyt navn</string>
 
     <string-array name="service">
         <item>Hvilken service?</item>
@@ -94,7 +82,8 @@
         <item>min private addresse, københavn</item>
         <item>min erhvervs addresse, rødovre</item>
     </string-array>
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
