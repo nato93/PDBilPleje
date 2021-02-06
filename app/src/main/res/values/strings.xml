@@ -17,7 +17,8 @@
 
     <!-- Phone verification Strings -->
     <string name="verificatinoTextView">Verification code, ex: 805FHJ</string>
-    <string name="verificationButton">Verify</string>
+    <string name="verificationButton">Get Verification Code</string>
+    <string name="loginButton2">Login</string>
 
 
 

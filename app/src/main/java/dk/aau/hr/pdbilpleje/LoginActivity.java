@@ -81,6 +81,9 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
 
 
+
+
+
                                 // Sign in success
                                 //was only line 122 - 126 inside the task.isSucessful before.
                                 FirebaseUser user = firebaseAuth.getCurrentUser();

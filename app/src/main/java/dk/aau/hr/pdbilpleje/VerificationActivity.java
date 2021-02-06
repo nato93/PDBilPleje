@@ -41,6 +41,9 @@ public class VerificationActivity extends AppCompatActivity {
                 userTypedCode = mVerificationEt.toString();
                 //Check if the verification code send to the phone is equal to the one in mVerificationEt
                 loginActivity.verifyCode(userTypedCode);
+
+
+
             }
         });
         }

@@ -32,7 +32,7 @@ public class ProfileFragment extends Fragment {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        //FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         //updateUI(currentUser);
     }
 
