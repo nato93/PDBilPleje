@@ -11,17 +11,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.NoActionBar">
         <activity android:name=".SignUpActivity">
-
         </activity>
-        <activity android:name=".FrontPageActivity">
+
+        <activity android:name=".Homepage.HomepageActivity">
+        </activity>
+
+        <activity android:name=".LoginActivity">
+        </activity>
+
+        <activity android:name=".FrontPageActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" /></intent-filter>
         </activity>
-        <activity android:name=".LoginActivity">
+
+        <activity android:name=".VerificationActivity">
         </activity>
-        <activity android:name=".Homepage.HomepageActivity" >
-        </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

@@ -67,6 +67,10 @@
     <string name="by">By</string>
     <string name="indtast_adresse">Indtast adresse</string>
     <string name="v_lg_dato">vælg dato</string>
+    <string name="gentag_ny_adgangskode">Gentag ny adgangskode</string>
+    <string name="indtast_ny_adgangskode">Indtast ny adgangskode</string>
+    <string name="indtast_gammel_adgangskode">Indtast gammel adgangskode</string>
+    <string name="nyt_navn">Nyt navn</string>
 
     <string-array name="service">
         <item>Hvilken service?</item>
