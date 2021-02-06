@@ -39,16 +39,15 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/changeNameButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="Skift navn"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@id/left_guideline"
         app:layout_constraintRight_toRightOf="@id/right_guideline"
-        app:layout_constraintTop_toBottomOf="@id/textViewName"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="16dp"
-        />
+        app:layout_constraintTop_toBottomOf="@id/textViewName" />
 
     <TextView
         android:id="@+id/textViewPassword"

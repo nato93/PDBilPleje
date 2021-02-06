@@ -4,20 +4,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.concurrent.TimeUnit;
 
 public class VerificationActivity extends AppCompatActivity {
 
     public EditText mVerificationEt;
-    public Button mVerificationButton;
+    public Button mGetVerificationCode, mLoginButton;
     public String userTypedCode;
+    private TextView processText;
+    private FirebaseAuth auth;
+    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallBacks;
 
     @Override
     public void onStart() {
@@ -29,23 +30,39 @@ public class VerificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verification);
 
+        auth = FirebaseAuth.getInstance();
+
         //Assigning the textfields
         mVerificationEt            = findViewById(R.id.textInputEmail2);
-        mVerificationButton             = findViewById(R.id.verifyButton);
+        mGetVerificationCode = findViewById(R.id.verifyButton);
+        mLoginButton             = findViewById(R.id.loginButton2);
         //Instantiating a new object of Loginactivity to use it's methods.
         final LoginActivity loginActivity = new LoginActivity();
 
-        mVerificationButton.setOnClickListener(new View.OnClickListener() {
+        mGetVerificationCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                userTypedCode = mVerificationEt.toString();
-                //Check if the verification code send to the phone is equal to the one in mVerificationEt
-                loginActivity.verifyCode(userTypedCode);
+            //Send a verification code to the current user's phone number
 
 
 
             }
         });
+
+        mLoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Check if the verification code send to the phone is equal to the one the user typed.
+                userTypedCode = mVerificationEt.toString();
+                loginActivity.verifyCode(userTypedCode);
+            }
+        });
+
+
+
+
+
+
         }
     }
 
