@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +19,8 @@ public class VerificationActivity extends AppCompatActivity {
     public EditText mVerificationEt;
     public Button mVerificationButton;
     public String userTypedCode;
+    private TextView processText;
+
 
     @Override
     public void onStart() {

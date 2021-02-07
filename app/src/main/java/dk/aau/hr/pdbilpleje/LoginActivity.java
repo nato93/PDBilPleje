@@ -80,6 +80,8 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
+                                //If 2fa is turned on, on the user account start verificationActivity
+
 
                                 // Sign in success
                                 //was only line 122 - 126 inside the task.isSucessful before.
