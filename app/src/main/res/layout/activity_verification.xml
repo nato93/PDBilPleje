@@ -60,14 +60,28 @@
     <Button
         android:id="@+id/verifyButton"
         android:layout_width="0dp"
-        android:layout_marginTop="50dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="@string/verificationButton"
         android:textAllCaps="true"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="@id/left_guideline"
         app:layout_constraintRight_toRightOf="@id/right_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/textFieldVerification" />
+        app:layout_constraintTop_toBottomOf="@+id/textFieldVerification"
+        tools:text="Get Verification Code" />
+
+    <Button
+        android:id="@+id/loginButton2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/loginButton2"
+        android:textAllCaps="true"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@id/left_guideline"
+        app:layout_constraintRight_toRightOf="@id/right_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/verifyButton"
+        tools:text="Login" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/left_guideline"
@@ -100,5 +114,16 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="353dp"
         app:layout_constraintGuide_percent="0.90" />
+
+    <TextView
+        android:id="@+id/textProcess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton2"
+        tools:text="@string/textProcess" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -105,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     //This method sends the code to the users phone number
-    private void sendVerificationCodeToUser (String phoneNumber){
+    public void sendVerificationCodeToUser (String phoneNumber){
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 "+ 45" + phoneNumber,         // Phone number to verify
                 60,
