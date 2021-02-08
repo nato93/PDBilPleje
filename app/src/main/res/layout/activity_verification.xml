@@ -115,4 +115,15 @@
         app:layout_constraintGuide_begin="353dp"
         app:layout_constraintGuide_percent="0.90" />
 
+    <TextView
+        android:id="@+id/textProcess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton2"
+        tools:text="@string/textProcess" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
