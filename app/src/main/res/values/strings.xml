@@ -1,0 +1,89 @@
+<resources>
+    <string name="app_name">PDBilPleje</string>
+
+    <string name="m_account_default_web_client_id">355809452873-85bggkrc3o64n3a2hr10bufrhoblvdbv.apps.googleusercontent.com</string>
+
+    <string name="enter_your_card_information_below">Enter Your Card Information Below</string>
+
+
+    <string name="loginButton">Login</string>
+    <string name="googleSignUpButton">Login med Google</string>
+    <string name="registerButton">Opret bruger</string>
+    <string name="emailTextView">Email</string>
+    <string name="passwordTextView">Password</string>
+    <string name="ignore">ignore</string>
+    <string name="indstillinger">Indstillinger</string>
+
+
+    <!-- Exception Strings -->
+    <string name="weak_password_exception">Password needs to be at least 6 characters.</string>
+    <string name="wrong_email_format">Please enter a valid email.</string>
+    <string name="error_text">couldn not register</string>
+    <string name="email_is_in_use">The entered email is already in use.</string>
+
+
+    <string name="noAccount">Don’t have an account? Sign up here</string>
+    <string name="todo">TODO</string>
+    <string name="forgot_password_click_here">Forgot password? Click here</string>
+    <string name="don_t_have_an_account_sign_up_here">Don’t have an account? Sign up here</string>
+    <string name="join_us">join us</string>
+    <string name="agree_to_accept_our_privacy_policy_terms_of_service"><![CDATA[By continuing, you agree to accept our Privacy Policy & Terms of Service.]]></string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="Name">Fornavn</string>
+    <string name="LastName">Efternavn</string>
+    <string name="Vej">Vej</string>
+    <string name="VejNr">Vej nr</string>
+    <string name="Postnummer">Postnummer</string>
+
+    <string name="profil">Min Profil</string>
+    <string name="nextButton">Næste ></string>
+    <string name="previousButton">Tilbage </string>
+    <string name="home">Home</string>
+    <string name="booking">Booking</string>
+    <string name="settings">Settings</string>
+    <string name="profile">Profile</string>
+    <string name="bestil_tid">bestil tid</string>
+    <string name="næste">Næste ></string>
+    <string name="hvilken_service">Hvilken service?</string>
+    <string name="hvilken_bil">Hvilken bil?</string>
+    <string name="hvilken_addresse">Hvilken addresse?</string>
+    <string name="tilbage"><![CDATA[< tilbage]]></string>
+    <string name="log_ud">log ud</string>
+    <string name="bil_type">Vælg bil type</string>
+    <string name="model">Model</string>
+    <string name="plus">+</string>
+    <string name="tilføj_bil">+ Tilføj Bil</string>
+    <string name="add_address">+ tilføj adresse</string>
+    <string name="vej_navn_nummer">Vej navn + nummer</string>
+    <string name="post_nummer">Post nr.</string>
+    <string name="by">By</string>
+    <string name="indtast_adresse">Indtast adresse</string>
+    <string name="v_lg_dato">vælg dato</string>
+
+    <string-array name="service">
+        <item>Hvilken service?</item>
+        <item>Komplet vask 799kr</item>
+        <item>Eksklusiv vask 1299kr</item>
+        <item>Luksus vask 799kr</item>
+        <item>Nano-Coating 5999kr</item>
+        <item>Dæk-skift 1999kr</item>
+        <item>Polering 2999kr</item>
+    </string-array>
+
+    <string-array name="bil">
+        <item>Hvilken bil?</item>
+        <item>min bil, suv</item>
+        <item>min bil, minibil</item>
+        <item>BMW, Stationcar</item>
+    </string-array>
+
+    <string-array name="hvor">
+        <item>min private addresse, københavn</item>
+        <item>min erhvervs addresse, rødovre</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>
