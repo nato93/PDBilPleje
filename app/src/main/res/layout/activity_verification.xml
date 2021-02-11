@@ -37,25 +37,7 @@
             android:layout_height="wrap_content"
             android:inputType="text" />
 
-    </com.google.android.material.textfield.TextInputLayout><![CDATA[
-
-
-
-
-    />
-
-
-
-
-
-
-
-
-
-
-
-
-    ]]>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/verifyButton"

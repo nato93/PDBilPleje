@@ -19,7 +19,7 @@
     <string name="verificatinoTextView">Verification code, ex: 805FHJ</string>
     <string name="verificationButton">Get Verification Code</string>
     <string name="loginButton2">Login</string>
-    <string name="textProcess"></string>
+    <string name="textProcess">Process text</string>
 
 
 
