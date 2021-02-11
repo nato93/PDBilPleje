@@ -76,8 +76,8 @@ public class VerificationActivity extends AppCompatActivity {
 
                                     try {
                                         //boolean phoneNumber = documentSnapshot.getBoolean("twofactor");
-                                        String name = documentSnapshot.getString("name");
-                                        mProcessText.setText(name);
+                                        String phoneNumber = documentSnapshot.getString("phonenumber");
+                                        mProcessText.setText(phoneNumber);
 
                                     } catch (NullPointerException e){
                                         Log.d(TAG, "Nullpointerexception the value was null!");
