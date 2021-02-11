@@ -89,7 +89,9 @@ public class LoginActivity extends AppCompatActivity {
                                 // Sign in success
                                 //was only line 122 - 126 inside the task.isSucessful before.
                                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                                Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
+                                //changed it from HomepageActivity to VerificationActivity.
+
+                                Intent intent = new Intent(LoginActivity.this, VerificationActivity.class);
                                 startActivity(intent);
                                 Toast.makeText(LoginActivity.this, "Velkommen! " + user.toString(),
                                         Toast.LENGTH_SHORT).show();
