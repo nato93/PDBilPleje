@@ -1,6 +1,8 @@
 package dk.aau.hr.pdbilpleje;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,10 +29,13 @@ public class LoginActivity extends AppCompatActivity {
 
     private final static String TAG = "LoginActivity";
     private FirebaseAuth firebaseAuth;
-    public EditText mEmailEt, mPasswordEt;
+    public EditText mEmailEt, mPasswordEt, mEmailreset;
     public Button mLoginButton, mFBloginButton;
+    public TextView mResetpassTextview;
     public ImageView mLogoImageView;
     private ProgressDialog progressDialog;
+    private AlertDialog.Builder dialogBuilder;
+    private AlertDialog dialog;
     //private DatabaseHandler db = new DatabaseHandler();
 
 
@@ -54,6 +60,8 @@ public class LoginActivity extends AppCompatActivity {
         mPasswordEt = findViewById(R.id.textInputPassword);
         mLoginButton = findViewById(R.id.loginButton);
         mLogoImageView = findViewById(R.id.imageViewLogo2);
+        mResetpassTextview = findViewById(R.id.textViewForgotPassword);
+
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +73,46 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        mResetpassTextview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            createResetPassDialog();
+            }
+        });
+
+    }
+
+    public void createResetPassDialog() {
+        dialogBuilder = new AlertDialog.Builder(this);
+        final View newCarPopup = getLayoutInflater().inflate(R.layout.popup_resetpass, null);
+        dialogBuilder.setView(newCarPopup);
+        dialogBuilder.setPositiveButton("NULSTIL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (isValid(mEmailreset.getText().toString())) {
+                    firebaseAuth.sendPasswordResetEmail(mEmailreset.getText().toString())
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(LoginActivity.this, "Nulstillings email sendt! Venligst tjek din email", Toast.LENGTH_LONG).show();
+                                        Log.d(TAG, "Email sent.");
+                                    }
+                                }
+                            });
+                } else {
+                    Toast.makeText(LoginActivity.this, "Indtast en korrekt email!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        dialog = dialogBuilder.create();
+        dialog.show();
+        mEmailreset = dialog.findViewById(R.id.editTextEmailReset);
+    }
+
+    static boolean isValid(String email) {
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        return email.matches(regex);
     }
 
     public void Login() {
