@@ -22,8 +22,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.concurrent.TimeUnit;
@@ -38,16 +36,17 @@ public class LoginActivity extends AppCompatActivity {
     public Button mLoginButton, mFBloginButton;
     public ImageView mLogoImageView;
     private ProgressDialog progressDialog;
-    FirebaseFirestore fStore;
+    FirebaseFirestore db;
+
 
     public String verificationCodeBySystsem;
-    public boolean UserHasTwoFactor;
+    public boolean userHasTwoFactor;
     public String phoneNo;
 
     @Override
     public void onStart() {
         super.onStart();
-        fStore = FirebaseFirestore.getInstance();
+        db = FirebaseFirestore.getInstance();
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
     }
 
@@ -79,16 +78,16 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
 
-                                //If 2fa is turned on, on the user account start verificationActivity
+                                //If 2fa is turned on the user account, start verificationActivity
 
 
-
-
+                           // if (userHasTwoFactor == true){
+                           // }
 
                                 // Sign in success
-                                //was only line 122 - 126 inside the task.isSucessful before.
-                                FirebaseUser user = firebaseAuth.getCurrentUser();
+
                                 //changed it from HomepageActivity to VerificationActivity.
 
                                 Intent intent = new Intent(LoginActivity.this, VerificationActivity.class);
