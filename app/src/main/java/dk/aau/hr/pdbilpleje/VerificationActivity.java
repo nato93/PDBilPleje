@@ -39,7 +39,7 @@ public class VerificationActivity extends AppCompatActivity {
     private DocumentReference docRef = fStore.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
 
-
+    // THIS IS THE NEW CODE
     @Override
     public void onStart() {
         super.onStart();
@@ -61,6 +61,7 @@ public class VerificationActivity extends AppCompatActivity {
         //Instantiating a new object of Loginactivity to use it's methods.
         //final LoginActivity loginActivity = new LoginActivity();
         auth = FirebaseAuth.getInstance();
+
 
 
         mVerificationButton.setOnClickListener(new View.OnClickListener() {
