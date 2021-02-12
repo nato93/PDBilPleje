@@ -59,7 +59,7 @@ public class VerificationActivity extends AppCompatActivity {
         mProcessText               = findViewById(R.id.textProcess);
 
         //Instantiating a new object of Loginactivity to use it's methods.
-        final LoginActivity loginActivity = new LoginActivity();
+        //final LoginActivity loginActivity = new LoginActivity();
         auth = FirebaseAuth.getInstance();
 
 
@@ -114,7 +114,7 @@ public class VerificationActivity extends AppCompatActivity {
                 //Check if it's the correct code.
                 userTypedCode = mVerificationEt.toString();
                 //Check if the verification code send to the phone is equal to the one in mVerificationEt
-                loginActivity.verifyCode(userTypedCode);
+                //loginActivity.verifyCode(userTypedCode);
 
             }
         });

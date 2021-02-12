@@ -86,7 +86,6 @@ public class LoginActivity extends AppCompatActivity {
                            // if (userHasTwoFactor == true){fd
                            // }
 
-                                // Sign in success
 
                                 //changed it from HomepageActivity to VerificationActivity.
 
