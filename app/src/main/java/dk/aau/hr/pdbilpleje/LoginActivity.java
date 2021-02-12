@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                                 //If 2fa is turned on the user account, start verificationActivity
 
 
-                           // if (userHasTwoFactor == true){
+                           // if (userHasTwoFactor == true){fd
                            // }
 
                                 // Sign in success
