@@ -51,6 +51,8 @@ public class VerificationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_verification);
 
         fStore = FirebaseFirestore.getInstance();
+        //auth = FirebaseAuth.getInstance();
+
 
         //Assigning the textfields
         mVerificationEt            = findViewById(R.id.textInputEmail2);
@@ -60,8 +62,6 @@ public class VerificationActivity extends AppCompatActivity {
 
         //Instantiating a new object of Loginactivity to use it's methods.
         //final LoginActivity loginActivity = new LoginActivity();
-        auth = FirebaseAuth.getInstance();
-
 
 
         mVerificationButton.setOnClickListener(new View.OnClickListener() {
@@ -100,8 +100,6 @@ public class VerificationActivity extends AppCompatActivity {
                         });
 
                 //loginActivity.sendVerificationCodeToUser(phoneNumber);
-
-
                 //mProcessText.setText("Code has been sent to phone number: " + "get the phone number from the db");
                 //mProcessText.setTextColor(Color.RED);
                 //mProcessText.setVisibility(View.VISIBLE);
@@ -119,14 +117,7 @@ public class VerificationActivity extends AppCompatActivity {
 
             }
         });
-
         }
-
-        public void loadRef (View v){
-
-        }
-
-
     }
 
 

@@ -25,8 +25,16 @@
                 <category android:name="android.intent.category.LAUNCHER" /></intent-filter>
         </activity>
 
-        <activity android:name=".VerificationActivity">
+
+
+        <activity android:name="VerificationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
         </activity>
+
+
+
 
         <meta-data
             android:name="preloaded_fonts"
