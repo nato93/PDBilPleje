@@ -26,7 +26,6 @@
         </activity>
 
 
-
         <activity android:name="VerificationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

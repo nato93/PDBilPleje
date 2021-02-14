@@ -1,5 +1,6 @@
 package dk.aau.hr.pdbilpleje;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,8 +15,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.TaskExecutors;
+import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -24,6 +28,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.concurrent.TimeUnit;
 
+import dk.aau.hr.pdbilpleje.Homepage.HomepageActivity;
+
 public class VerificationActivity extends AppCompatActivity {
 
     public EditText mVerificationEt;
@@ -31,13 +37,13 @@ public class VerificationActivity extends AppCompatActivity {
     public String userTypedCode;
     private TextView mProcessText;
     public String phoneNumber = "71430433";
-    private FirebaseAuth auth;
+    private FirebaseAuth firebaseAuth;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallBacks;
     FirebaseFirestore fStore;
     private String name = "unknown";
     private final static String TAG = "VerificationActivity";
     private DocumentReference docRef = fStore.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
-
+    public String verificationCodeBySystsem;
 
     // THIS IS THE NEW CODE
     @Override
@@ -77,8 +83,8 @@ public class VerificationActivity extends AppCompatActivity {
 
                                     try {
                                         //boolean phoneNumber = documentSnapshot.getBoolean("twofactor");
-                                        String name = documentSnapshot.getString("name");
-                                        mProcessText.setText(name);
+                                        String phonenumber = documentSnapshot.getString("phonenumber");
+                                        mProcessText.setText(phonenumber);
 
                                     } catch (NullPointerException e){
                                         Log.d(TAG, "Nullpointerexception the value was null!");
@@ -104,6 +110,10 @@ public class VerificationActivity extends AppCompatActivity {
                 //mProcessText.setTextColor(Color.RED);
                 //mProcessText.setVisibility(View.VISIBLE);
 
+
+                sendVerificationCodeToUser(phoneNumber);
+
+
             }
         });
 
@@ -118,6 +128,49 @@ public class VerificationActivity extends AppCompatActivity {
             }
         });
         }
+    //This method sends the code to the users phone number
+    public void sendVerificationCodeToUser (String phoneNumber){
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                "+ 45" + phoneNumber,         // Phone number to verify
+                60,
+                TimeUnit.SECONDS, // Timeout and unit
+                TaskExecutors.MAIN_THREAD,                    // Activity (for callback binding)
+                mCallbacks);          // OnVerificationStateChangedCallbacks
     }
+
+    //This method checks if the sms sent was successful
+    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+
+        @Override
+        public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+            super.onCodeSent(s, forceResendingToken);
+
+            verificationCodeBySystsem = s;
+        }
+
+        @Override
+        public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+            String code = phoneAuthCredential.getSmsCode();
+            if (code != null){
+                verifyCode(code);
+            }
+        }
+
+        @Override
+        public void onVerificationFailed(@NonNull FirebaseException e) {
+            Toast.makeText(VerificationActivity.this, "Verification Failed!", Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    //This method checks if the Sms code matches the one the user typed.
+    public void verifyCode(String codeByUser){
+
+        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCodeBySystsem, codeByUser);
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        Intent intent = new Intent(VerificationActivity.this, HomepageActivity.class);
+        startActivity(intent);
+    }
+
+}
 
 

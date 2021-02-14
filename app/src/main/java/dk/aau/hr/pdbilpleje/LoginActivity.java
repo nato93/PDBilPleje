@@ -38,8 +38,6 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     FirebaseFirestore db;
 
-
-    public String verificationCodeBySystsem;
     public boolean userHasTwoFactor;
     public String phoneNo;
 
@@ -61,7 +59,6 @@ public class LoginActivity extends AppCompatActivity {
         mPasswordEt = findViewById(R.id.textInputPassword);
         mLoginButton = findViewById(R.id.loginButton);
         mLogoImageView = findViewById(R.id.imageViewLogo2);
-
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,11 +79,8 @@ public class LoginActivity extends AppCompatActivity {
 
                                 //If 2fa is turned on the user account, start verificationActivity
 
-
                            // if (userHasTwoFactor == true){fd
                            // }
-
-
                                 //changed it from HomepageActivity to VerificationActivity.
 
                                 Intent intent = new Intent(LoginActivity.this, VerificationActivity.class);
@@ -106,50 +100,4 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
-
-    //This method sends the code to the users phone number
-    public void sendVerificationCodeToUser (String phoneNumber){
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                "+ 45" + phoneNumber,         // Phone number to verify
-                60,
-                TimeUnit.SECONDS, // Timeout and unit
-                TaskExecutors.MAIN_THREAD,                    // Activity (for callback binding)
-                mCallbacks);          // OnVerificationStateChangedCallbacks
-    }
-
-    //This method checks if the sms sent was successful
-    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-
-        @Override
-        public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-            super.onCodeSent(s, forceResendingToken);
-
-            verificationCodeBySystsem = s;
-        }
-
-        @Override
-        public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-            String code = phoneAuthCredential.getSmsCode();
-            if (code != null){
-                verifyCode(code);
-            }
-
-        }
-
-        @Override
-        public void onVerificationFailed(@NonNull FirebaseException e) {
-            Toast.makeText(LoginActivity.this, "Verification Failed!", Toast.LENGTH_SHORT).show();
-        }
-    };
-
-    //This method checks if the Sms code matches the one the user typed.
-    public void verifyCode(String codeByUser){
-
-        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCodeBySystsem, codeByUser);
-
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
-        startActivity(intent);
-    }
-
 }
