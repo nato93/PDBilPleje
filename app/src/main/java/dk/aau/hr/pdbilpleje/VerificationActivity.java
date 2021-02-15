@@ -119,6 +119,8 @@ public class VerificationActivity extends AppCompatActivity {
 
     //This method sends the code to the users phone number
     public void sendVerificationCodeToUser (String phoneno){
+        Toast.makeText(VerificationActivity.this, "THE CODE SHOULD BE SENT KEK", Toast.LENGTH_SHORT).show();
+
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 "+ 45" + phoneno,         // Phone number to verify
                 60,
