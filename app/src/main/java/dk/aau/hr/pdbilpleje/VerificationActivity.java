@@ -53,7 +53,7 @@ public class VerificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verification);
-        fStore = FirebaseFirestore.getInstance();
+        //fStore = FirebaseFirestore.getInstance();
         //auth = FirebaseAuth.getInstance();
         //Assigning the textfields
         mVerificationEt            = findViewById(R.id.textInputEmail2);
@@ -147,7 +147,6 @@ public class VerificationActivity extends AppCompatActivity {
 
     //This method checks if the Sms code matches the one the user typed.
     public void verifyCode(String codeByUser){
-
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCodeBySystsem, codeByUser);
         FirebaseUser user = firebaseAuth.getCurrentUser();
         Intent intent = new Intent(VerificationActivity.this, HomepageActivity.class);

@@ -29,7 +29,6 @@ import java.util.concurrent.TimeUnit;
 import dk.aau.hr.pdbilpleje.Homepage.HomepageActivity;
 
 public class LoginActivity extends AppCompatActivity {
-
     private final static String TAG = "LoginActivity";
     private FirebaseAuth firebaseAuth;
     public EditText mEmailEt, mPasswordEt;
@@ -37,7 +36,6 @@ public class LoginActivity extends AppCompatActivity {
     public ImageView mLogoImageView;
     private ProgressDialog progressDialog;
     FirebaseFirestore db;
-
     public boolean userHasTwoFactor;
     public String phoneNo;
 
@@ -68,26 +66,20 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void Login(){
-
         firebaseAuth.signInWithEmailAndPassword(mEmailEt.getText().toString(), mPasswordEt.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = firebaseAuth.getCurrentUser();
-
                                 //If 2fa is turned on the user account, start verificationActivity
-
                            // if (userHasTwoFactor == true){fd
                            // }
                                 //changed it from HomepageActivity to VerificationActivity.
-
-                                Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, VerificationActivity.class);
                                 startActivity(intent);
                                 Toast.makeText(LoginActivity.this, "Velkommen! " + user.toString(),
                                         Toast.LENGTH_SHORT).show();
-
-
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
