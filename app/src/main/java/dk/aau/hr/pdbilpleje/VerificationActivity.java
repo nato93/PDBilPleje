@@ -150,7 +150,7 @@ public class VerificationActivity extends AppCompatActivity {
 
         @Override
         public void onVerificationFailed(@NonNull FirebaseException e) {
-            Toast.makeText(VerificationActivity.this, "Verification Failed!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(VerificationActivity.this, "SMS DIDN'T SEND SUCESSFULLY!", Toast.LENGTH_SHORT).show();
         }
     };
 
