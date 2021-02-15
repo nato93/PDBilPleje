@@ -81,7 +81,7 @@ public class VerificationActivity extends AppCompatActivity {
                                         String phonenumber = documentSnapshot.getString("phonenumber");
                                         mProcessText.setText(phonenumber);
                                     } catch (NullPointerException e){
-                                        Log.d(TAG, "Nullpointerexception the value was null!");
+                                        Log.d(TAG, "Nullpointerexception the value was null DET DEN HER!");
                                     }
                                 }else{
                                     Toast.makeText(VerificationActivity.this, "This Field doesn't exist.", Toast.LENGTH_SHORT).show();
