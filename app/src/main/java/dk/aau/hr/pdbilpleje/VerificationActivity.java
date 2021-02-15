@@ -48,7 +48,7 @@ public class VerificationActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
     }
-
+    //fs
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
