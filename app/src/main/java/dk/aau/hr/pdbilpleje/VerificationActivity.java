@@ -41,19 +41,21 @@ public class VerificationActivity extends AppCompatActivity {
     FirebaseFirestore fStore;
     private String name = "unknown";
     private final static String TAG = "VerificationActivity";
-    //private DocumentReference docRef = fStore.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+    private DocumentReference docRef;
     public String verificationCodeBySystsem;
     // THIS IS THE NEW CODE
     @Override
     public void onStart() {
         super.onStart();
+        fStore = FirebaseFirestore.getInstance();
+        docRef = fStore.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
     }
     //fs
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verification);
-        //fStore = FirebaseFirestore.getInstance();
         //auth = FirebaseAuth.getInstance();
         //Assigning the textfields
         mVerificationEt            = findViewById(R.id.textInputEmail2);
