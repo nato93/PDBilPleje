@@ -100,7 +100,6 @@ public class VerificationActivity extends AppCompatActivity {
                 //mProcessText.setText("Code has been sent to phone number: " + "get the phone number from the db");
                 //mProcessText.setTextColor(Color.RED);
                 //mProcessText.setVisibility(View.VISIBLE);
-                sendVerificationCodeToUser(phoneNumber);
             }
         });
 
@@ -113,7 +112,10 @@ public class VerificationActivity extends AppCompatActivity {
                 //loginActivity.verifyCode(userTypedCode);
             }
         });
-        }
+
+        sendVerificationCodeToUser(phoneNumber);
+
+    }
 
     //This method sends the code to the users phone number
     public void sendVerificationCodeToUser (String phoneno){
