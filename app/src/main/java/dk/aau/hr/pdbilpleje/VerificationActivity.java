@@ -116,9 +116,9 @@ public class VerificationActivity extends AppCompatActivity {
         }
 
     //This method sends the code to the users phone number
-    public void sendVerificationCodeToUser (String phoneNumber){
+    public void sendVerificationCodeToUser (String phoneno){
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                "+ 45" + phoneNumber,         // Phone number to verify
+                "+ 45" + phoneno,         // Phone number to verify
                 60,
                 TimeUnit.SECONDS, // Timeout and unit
                 TaskExecutors.MAIN_THREAD,                    // Activity (for callback binding)
