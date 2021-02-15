@@ -52,7 +52,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
         mEmailEt = findViewById(R.id.textInputEmail);
@@ -83,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                            // }
                                 //changed it from HomepageActivity to VerificationActivity.
 
-                                Intent intent = new Intent(LoginActivity.this, VerificationActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
                                 startActivity(intent);
                                 Toast.makeText(LoginActivity.this, "Velkommen! " + user.toString(),
                                         Toast.LENGTH_SHORT).show();
