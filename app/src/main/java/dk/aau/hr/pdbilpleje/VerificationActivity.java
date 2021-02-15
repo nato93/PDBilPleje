@@ -69,39 +69,40 @@ public class VerificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //Send code to the currrent user's phone number.
-                docRef.get()
-                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                            @Override
-                            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                if(documentSnapshot.exists()){
-
-                                    try {
-                                        //boolean phoneNumber = documentSnapshot.getBoolean("twofactor");
-                                        String phonenumber = documentSnapshot.getString("phonenumber");
-                                        mProcessText.setText(phonenumber);
-                                    } catch (NullPointerException e){
-                                        Log.d(TAG, "Nullpointerexception the value was null DET DEN HER!");
-                                    }
-                                }else{
-                                    Toast.makeText(VerificationActivity.this, "This Field doesn't exist.", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(VerificationActivity.this, "Error!", Toast.LENGTH_SHORT).show();
-                                Log.d(TAG, e.toString());
-                            }
-                        });
-
                 //loginActivity.sendVerificationCodeToUser(phoneNumber);
                 //mProcessText.setText("Code has been sent to phone number: " + "get the phone number from the db");
                 //mProcessText.setTextColor(Color.RED);
                 //mProcessText.setVisibility(View.VISIBLE);
             }
         });
+
+        //Send code to the currrent user's phone number.
+        docRef.get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if(documentSnapshot.exists()){
+
+                            try {
+                                //boolean phoneNumber = documentSnapshot.getBoolean("twofactor");
+                                String phonenumber = documentSnapshot.getString("phonenumber");
+                                mProcessText.setText(phonenumber);
+                            } catch (NullPointerException e){
+                                Log.d(TAG, "Nullpointerexception the value was null DET DEN HER!");
+                            }
+                        }else{
+                            Toast.makeText(VerificationActivity.this, "This Field doesn't exist.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(VerificationActivity.this, "Error!", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, e.toString());
+                    }
+                });
+
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
