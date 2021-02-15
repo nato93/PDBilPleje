@@ -41,7 +41,7 @@ public class VerificationActivity extends AppCompatActivity {
     FirebaseFirestore fStore;
     private String name = "unknown";
     private final static String TAG = "VerificationActivity";
-    private DocumentReference docRef = fStore.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+    //private DocumentReference docRef = fStore.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
     public String verificationCodeBySystsem;
     // THIS IS THE NEW CODE
     @Override
