@@ -60,6 +60,11 @@
     <string name="by">By</string>
     <string name="indtast_adresse">Indtast adresse</string>
     <string name="v_lg_dato">vælg dato</string>
+    <string name="gentag_ny_adgangskode">Gentag ny adgangskode</string>
+    <string name="indtast_ny_adgangskode">Indtast ny adgangskode</string>
+    <string name="indtast_gammel_adgangskode">Indtast gammel adgangskode</string>
+    <string name="nyt_navn">Nyt navn</string>
+
 
     <string-array name="service">
         <item>Hvilken service?</item>
@@ -85,6 +90,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="log_ud_">LOG UD</string>
+    <string name="indtast_ny_email">Indtast ny email</string>
+    <string name="gentag_ny_email">Gentag ny email</string>
+    <string name="ny_email">Ny email</string>
 
 
 </resources>

@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -109,6 +110,21 @@ public class SignUpActivity extends AppCompatActivity {
                                                 user.put("phonenumber", phoneNumber);
                                                 user.put("postalcode", postCode);
                                                 user.put("twofactor", false);
+
+                                                FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
+                                                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                                        .setDisplayName(name + " " + lastName)
+                                                        .build();
+
+                                                user1.updateProfile(profileUpdates)
+                                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task<Void> task) {
+                                                                if (task.isSuccessful()) {
+                                                                    Log.d(TAG, "User profile updated.");
+                                                                }
+                                                            }
+                                                        });
 
                                                 fStore.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                                         .set(user)
