@@ -13,12 +13,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.TaskExecutors;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
@@ -33,16 +34,16 @@ import dk.aau.hr.pdbilpleje.Homepage.HomepageActivity;
 public class VerificationActivity extends AppCompatActivity {
     public EditText mVerificationEt;
     public Button mVerificationButton, mLoginButton;
-    public String userTypedCode;
+    public String userTypedOTP;
     private TextView mProcessText;
     public String phoneNumber = "29414387";
-    private FirebaseAuth firebaseAuth;
-    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallBacks;
+    private FirebaseAuth auth;
+    public PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     FirebaseFirestore fStore;
     private String name = "unknown";
     private final static String TAG = "VerificationActivity";
     private DocumentReference docRef;
-    public String verificationCodeBySystsem;
+    public String verificationCode;
     // THIS IS THE NEW CODE
     @Override
     public void onStart() {
@@ -62,8 +63,10 @@ public class VerificationActivity extends AppCompatActivity {
         mVerificationButton        = findViewById(R.id.verifyButton);
         mLoginButton               = findViewById(R.id.loginButton2);
         mProcessText               = findViewById(R.id.textProcess);
-        //Instantiating a new object of Loginactivity to use it's methods.
-        //final LoginActivity loginActivity = new LoginActivity();
+
+
+        // Method that handles the callbacks a.k.a checking if the OTP was sent
+        StartFirebaseLogin();
 
         mVerificationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,9 +81,17 @@ public class VerificationActivity extends AppCompatActivity {
 
                                     try {
                                         //boolean phoneNumber = documentSnapshot.getBoolean("twofactor");
-                                        String phonenumber = documentSnapshot.getString("phonenumber");
-                                        mProcessText.setText(phonenumber);
-                                        sendVerificationCodeToUser(phoneNumber);
+                                        String phoneNumber = documentSnapshot.getString("phonenumber");
+                                        mProcessText.setText(phoneNumber);
+                                        //sendVerificationCodeToUser(phoneNumber);
+
+                                        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                                                 "+45" + phoneNumber,                     // Phone number to verify
+                                                60,                           // Timeout duration
+                                                TimeUnit.SECONDS,                // Unit of timeout
+                                                VerificationActivity.this,        // Activity (for callback binding)
+                                                mCallbacks);                      // OnVerificationStateChangedCallbacks
+
 
                                     } catch (NullPointerException e){
                                         Log.d(TAG, "Nullpointerexception the value was null DET DEN HER!");
@@ -106,19 +117,70 @@ public class VerificationActivity extends AppCompatActivity {
         });
 
 
-
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Check if it's the correct code.
-                userTypedCode = mVerificationEt.toString();
+                userTypedOTP = mVerificationEt.toString();
+                PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode, userTypedOTP);
+                SigninWithPhone(credential);
+
                 //Check if the verification code send to the phone is equal to the one in mVerificationEt
                 //loginActivity.verifyCode(userTypedCode);
             }
         });
-
-
     }
+
+
+    private void StartFirebaseLogin() {
+
+        auth = FirebaseAuth.getInstance();
+        mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+
+            @Override
+            public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
+                Toast.makeText(VerificationActivity.this,"verification completed",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onVerificationFailed(FirebaseException e) {
+                Toast.makeText(VerificationActivity.this,"verification failed",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+                super.onCodeSent(s, forceResendingToken);
+                verificationCode = s;
+                Toast.makeText(VerificationActivity.this,"Code sent",Toast.LENGTH_SHORT).show();
+                mProcessText.setText("Code has been sent to: " + phoneNumber);
+                mProcessText.setTextColor(Color.GREEN);
+                mProcessText.setVisibility(View.VISIBLE);
+            }
+        };
+    }
+
+
+    private void SigninWithPhone(PhoneAuthCredential credential) {
+        auth.signInWithCredential(credential)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            startActivity(new Intent(VerificationActivity.this, HomepageActivity.class));
+                            finish();
+                        } else {
+                            Toast.makeText(VerificationActivity.this,"Incorrect OTP",Toast.LENGTH_SHORT).show();
+                            mProcessText.setText("Wrong code!");
+                            mProcessText.setTextColor(Color.RED);
+                            mProcessText.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
+    }
+
+
+
+   /*
 
     //This method sends the code to the users phone number
     public void sendVerificationCodeToUser (String phoneno){
@@ -133,11 +195,11 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     //This method checks if the sms sent was successful
-    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+    public PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         @Override
         public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
-            verificationCodeBySystsem = s;
+            verificationCode = s;
         }
 
         @Override
@@ -156,11 +218,17 @@ public class VerificationActivity extends AppCompatActivity {
 
     //This method checks if the Sms code matches the one the user typed.
     public void verifyCode(String codeByUser){
-        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCodeBySystsem, codeByUser);
-        FirebaseUser user = firebaseAuth.getCurrentUser();
+        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode, codeByUser);
+        FirebaseUser user = auth.getCurrentUser();
         Intent intent = new Intent(VerificationActivity.this, HomepageActivity.class);
         startActivity(intent);
     }
+
+*/
+
+
+
+
 }
 
 
