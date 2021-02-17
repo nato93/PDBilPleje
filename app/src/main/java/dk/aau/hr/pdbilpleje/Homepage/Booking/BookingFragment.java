@@ -12,6 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -31,7 +34,9 @@ public class BookingFragment extends Fragment {
     private AlertDialog dialog, dialog2;
     private ArrayList<String> cars;
     private EditText mEditTextModel;
+    protected TextView mTextViewType;
     private String selService, selCar;
+    protected ImageButton mImageButton1, mImageButton2, mImageButton3, mImageButton4, mImageButton5, mImageButton6;
     private static final String TAG = "BookingFragment";
 
 
@@ -126,11 +131,67 @@ public class BookingFragment extends Fragment {
         dialogBuilder.setPositiveButton("NÆSTE >", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                createNewCarDialog2();
+                if (mTextViewType.toString().isEmpty()){
+                    Toast.makeText(getContext(), "Vælg venligst din bil type!", Toast.LENGTH_LONG).show();
+                } else {
+                    createNewCarDialog2();
+                }
+
             }
         });
         dialog = dialogBuilder.create();
         dialog.show();
+        mTextViewType = dialog.findViewById(R.id.carType);
+        mImageButton1 = dialog.findViewById(R.id.imageButton);
+        mImageButton2 = dialog.findViewById(R.id.imageButton2);
+        mImageButton3 = dialog.findViewById(R.id.imageButton3);
+        mImageButton4 = dialog.findViewById(R.id.imageButton4);
+        mImageButton5 = dialog.findViewById(R.id.imageButton5);
+        mImageButton6 = dialog.findViewById(R.id.imageButton6);
+
+        mImageButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mTextViewType.setText("SEDAN");
+            }
+        });
+
+        mImageButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mTextViewType.setText("Coupe");
+            }
+        });
+
+        mImageButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mTextViewType.setText("Van");
+            }
+        });
+
+        mImageButton4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mTextViewType.setText("SUV");
+            }
+        });
+
+        mImageButton5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mTextViewType.setText("BUS");
+            }
+        });
+
+        mImageButton6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mTextViewType.setText("CABRIOLET");
+            }
+        });
+
+
     }
 
     public void createNewCarDialog2() {
@@ -153,6 +214,7 @@ public class BookingFragment extends Fragment {
         dialog2 = dialogBuilder2.create();
         dialog2.show();
         mEditTextModel = dialog2.findViewById(R.id.editTextCarmodel);
+
 
     }
 } //Class End
