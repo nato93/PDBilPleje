@@ -59,7 +59,7 @@ public class VerificationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_verification);
         //auth = FirebaseAuth.getInstance();
         //Assigning the textfields
-        mVerificationEt            = findViewById(R.id.textInputEmail2);
+        mVerificationEt            = findViewById(R.id.textInputVerification);
         mVerificationButton        = findViewById(R.id.verifyButton);
         mLoginButton               = findViewById(R.id.loginButton2);
         mProcessText               = findViewById(R.id.textProcess);
