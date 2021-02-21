@@ -36,7 +36,7 @@ public class VerificationActivity extends AppCompatActivity {
     public Button mVerificationButton, mLoginButton;
     public String userTypedOTP;
     private TextView mProcessText;
-    public String phoneNumber = "29414387";
+    public String phoneNumber;
     private FirebaseAuth auth;
     public PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     FirebaseFirestore fStore;
