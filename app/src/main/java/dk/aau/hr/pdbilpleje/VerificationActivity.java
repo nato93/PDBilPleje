@@ -122,7 +122,7 @@ public class VerificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Check if it's the correct code.
-                userTypedOTP = mVerificationEt.getText().toString();
+                userTypedOTP = mVerificationEt.toString();
                 PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode, userTypedOTP);
                 SigninWithPhone(credential);
 
