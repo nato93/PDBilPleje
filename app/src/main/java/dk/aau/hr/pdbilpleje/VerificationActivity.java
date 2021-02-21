@@ -36,7 +36,7 @@ public class VerificationActivity extends AppCompatActivity {
     public Button mVerificationButton, mLoginButton;
     public String userTypedOTP;
     private TextView mProcessText;
-    public String phoneNumber;
+    //public String phoneNumber;
     private FirebaseAuth auth;
     public PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     FirebaseFirestore fStore;
@@ -66,7 +66,6 @@ public class VerificationActivity extends AppCompatActivity {
 
 
         // Method that handles the callbacks a.k.a checking if the OTP was sent
-        StartFirebaseLogin();
 
         mVerificationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +83,8 @@ public class VerificationActivity extends AppCompatActivity {
                                         String phoneNumber = documentSnapshot.getString("phonenumber");
                                         mProcessText.setText(phoneNumber);
                                         //sendVerificationCodeToUser(phoneNumber);
+                                        StartFirebaseLogin();
+
 
                                         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                                                  "+45" + phoneNumber,                     // Phone number to verify
@@ -152,7 +153,7 @@ public class VerificationActivity extends AppCompatActivity {
                 super.onCodeSent(s, forceResendingToken);
                 verificationCode = s;
                 Toast.makeText(VerificationActivity.this,"Code sent",Toast.LENGTH_SHORT).show();
-                mProcessText.setText("Code has been sent to: " + phoneNumber);
+                mProcessText.setText("Code has been sent");
                 mProcessText.setTextColor(Color.GREEN);
                 mProcessText.setVisibility(View.VISIBLE);
             }
