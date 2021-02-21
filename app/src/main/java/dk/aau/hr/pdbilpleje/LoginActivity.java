@@ -66,10 +66,14 @@ public class LoginActivity extends AppCompatActivity {
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if (mEmailEt.getText().toString().isEmpty()){
+                    mEmailEt.setError("Indtast venligst din email!");
+                } else if (mPasswordEt.getText().toString().isEmpty()){
+                    mPasswordEt.setError("Venligst indtast din adgangskode!");
+                } else {
+                    Login();
+                }
                 //uncomment login()  if you want login to work again
-                Login();
-
             }
         });
 
@@ -102,6 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                             });
                 } else {
                     Toast.makeText(LoginActivity.this, "Indtast en korrekt email!", Toast.LENGTH_SHORT).show();
+                    mEmailreset.setError("Indtast en korrekt email!");
                 }
             }
         });
