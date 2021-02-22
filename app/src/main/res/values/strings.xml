@@ -12,7 +12,15 @@
     <string name="emailTextView">Email</string>
     <string name="passwordTextView">Password</string>
     <string name="ignore">ignore</string>
+
     <string name="indstillinger">Indstillinger</string>
+    <string name="logUdTextView">Log Ud</string>
+    <string name="twoFactorSwitch">Slå to-faktor godkendelse til</string>
+
+    <string name="verificatinoTextView">Verification code, ex: 805FHJ</string>
+    <string name="verificationButton">Get Verification Code</string>
+    <string name="loginButton2">Login</string>
+    <string name="textProcess">Process text</string>
 
 
     <!-- Exception Strings -->
@@ -22,14 +30,14 @@
     <string name="email_is_in_use">The entered email is already in use.</string>
 
 
-    <string name="noAccount">Don’t have an account? Sign up here</string>
+    <string name="noAccount">Har du ikke en konto? Opret konto her</string>
     <string name="todo">TODO</string>
-    <string name="forgot_password_click_here">Forgot password? Click here</string>
-    <string name="don_t_have_an_account_sign_up_here">Don’t have an account? Sign up here</string>
-    <string name="join_us">join us</string>
+    <string name="forgot_password_click_here">Glemt adgangskode? Tryk her</string>
+    <string name="don_t_have_an_account_sign_up_here">Har du ikke en konto? Opret konto her</string>
+    <string name="join_us">join os</string>
     <string name="agree_to_accept_our_privacy_policy_terms_of_service"><![CDATA[By continuing, you agree to accept our Privacy Policy & Terms of Service.]]></string>
-    <string name="repeat_password">Repeat Password</string>
-    <string name="phone_number">Phone Number</string>
+    <string name="repeat_password">Gentag Adgangskode</string>
+    <string name="phone_number">Telefon Nummer</string>
     <string name="Name">Fornavn</string>
     <string name="LastName">Efternavn</string>
     <string name="Vej">Vej</string>
