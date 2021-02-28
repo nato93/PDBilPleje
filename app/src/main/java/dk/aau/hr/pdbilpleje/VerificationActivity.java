@@ -168,7 +168,7 @@ public class VerificationActivity extends AppCompatActivity {
             public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                 super.onCodeSent(s, forceResendingToken);
                 verificationCode = s;
-                Toast.makeText(VerificationActivity.this,"Code sent",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(VerificationActivity.this,"Code sent",Toast.LENGTH_SHORT).show();
                 mProcessText.setText("Code has been sent");
                 mProcessText.setTextColor(Color.GREEN);
                 mProcessText.setVisibility(View.VISIBLE);
