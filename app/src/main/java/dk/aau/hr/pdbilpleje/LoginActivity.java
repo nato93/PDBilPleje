@@ -17,10 +17,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import dk.aau.hr.pdbilpleje.Homepage.HomepageActivity;
 
@@ -36,13 +41,16 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
+    FirebaseFirestore db;
     //private DatabaseHandler db = new DatabaseHandler();
+    public DocumentReference docRef;
+
 
 
     @Override
     public void onStart() {
         super.onStart();
-
+        db = FirebaseFirestore.getInstance();
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
 
     }
@@ -120,41 +128,84 @@ public class LoginActivity extends AppCompatActivity {
         return email.matches(regex);
     }
 
-    public void Login() {
-
+    public void Login(){
         firebaseAuth.signInWithEmailAndPassword(mEmailEt.getText().toString(), mPasswordEt.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = firebaseAuth.getCurrentUser();
-                            Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
-                            startActivity(intent);
-                            Toast.makeText(LoginActivity.this, "Velkommen! " + user.toString(),
-                                    Toast.LENGTH_SHORT).show();
 
-                            //updateUI(user);
+
+
+
+                            //put this 1
+                            docRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                            //put this 1
+                            //Send code to the currrent user's phone number.
+                            docRef.get()
+                                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                            if(documentSnapshot.exists()){
+
+                                                try {
+                                                    //boolean phoneNumber = documentSnapshot.getBoolean("twofactor");
+                                                    boolean userHasTwoFactor = documentSnapshot.getBoolean("twofactor");
+                                                    FirebaseUser user = firebaseAuth.getCurrentUser();
+
+                                                    //If 2fa is turned on the user account, start verificationActivity
+                                                    // if (userHasTwoFactor == true){fd
+                                                    // }
+
+                                                    if(userHasTwoFactor == true){
+                                                        Intent intent = new Intent(LoginActivity.this, VerificationActivity.class);
+                                                        startActivity(intent);
+
+                                                    }else{
+                                                        Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
+                                                        startActivity(intent);
+                                                        Toast.makeText(LoginActivity.this, "Velkommen! ",
+                                                                Toast.LENGTH_SHORT).show();
+                                                    }
+
+                                                } catch (NullPointerException e){
+                                                    Toast.makeText(LoginActivity.this, "The twofactor was null", Toast.LENGTH_SHORT).show();
+
+                                                }
+                                            }else{
+                                                Toast.makeText(LoginActivity.this, "This Field doesn't exist.", Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
+                                                startActivity(intent);
+                                                Toast.makeText(LoginActivity.this, "Velkommen! ",
+                                                        Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+
+
+                                    })
+
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(LoginActivity.this, "Error!", Toast.LENGTH_SHORT).show();
+                                            Log.d(TAG, e.toString());
+                                        }
+                                    });
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                             System.out.println("Sign-in Failed: " + task.getException().getMessage());
-
                             Toast.makeText(LoginActivity.this, "couldn't login", Toast.LENGTH_SHORT).show();
-                            //updateUI(null);
                         }
 
-                        // ...
+
+
+
                     }
                 });
-
-    }
-
-
-    public void updateUI(FirebaseUser user) {
-
     }
 
 
