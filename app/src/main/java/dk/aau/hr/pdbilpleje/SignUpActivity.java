@@ -97,7 +97,6 @@ public class SignUpActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
-
                         try {
                                             //check if successful
                                             if (task.isSuccessful()) {
@@ -154,8 +153,6 @@ public class SignUpActivity extends AppCompatActivity {
                                                     Toast.makeText(SignUpActivity.this,"Please enter a valid email.",
                                                             Toast.LENGTH_SHORT).show();
                                                     mEmailEt.requestFocus();
-
-
                                                 } catch(FirebaseAuthUserCollisionException err) {
 
                                                     Toast.makeText(SignUpActivity.this,"The entered email is already in use.", Toast.LENGTH_SHORT).show();

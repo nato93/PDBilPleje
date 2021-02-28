@@ -123,7 +123,7 @@ public class VerificationActivity extends AppCompatActivity {
                 userTypedOTP = mVerificationEt.toString();
 
                 if (userTypedOTP.isEmpty() || userTypedOTP.length() < 6) {
-                    mProcessText.setText("Wrong OTP");
+                    mProcessText.setText("the typed OTP length is too short!");
                     mProcessText.setTextColor(Color.RED);
                     mProcessText.setVisibility(View.VISIBLE);
                     mVerificationEt.requestFocus();
@@ -135,8 +135,19 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     private void verifyCode(String codeByUser) {
-        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode, codeByUser);
-        signInTheUserByCredentials(credential);
+        //PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode, codeByUser);
+        //signInTheUserByCredentials(credential);
+
+        if (codeByUser.equals(verificationCode)){
+            Toast.makeText(VerificationActivity.this,"The codes match!",Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(VerificationActivity.this, HomepageActivity.class));
+
+        } else {
+            Toast.makeText(VerificationActivity.this,"Codes don't match",Toast.LENGTH_SHORT).show();
+        }
+
+
+
     }
 
     private void StartFirebaseLogin() {
@@ -206,10 +217,6 @@ public class VerificationActivity extends AppCompatActivity {
                     }
                 });
     }
-
-
-
-
 
    /*
 
