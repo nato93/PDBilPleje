@@ -94,6 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                                         public void onSuccess(DocumentSnapshot documentSnapshot) {
                                             if(documentSnapshot.exists()){
 
+
                                                 try {
                                                     //boolean phoneNumber = documentSnapshot.getBoolean("twofactor");
                                                     String userHasTwoFactor = documentSnapshot.getString("twofactor");
