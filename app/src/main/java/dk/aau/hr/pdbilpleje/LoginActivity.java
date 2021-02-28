@@ -125,17 +125,13 @@ public class LoginActivity extends AppCompatActivity {
                             if(userHasTwoFactor == true){
                                 Intent intent = new Intent(LoginActivity.this, VerificationActivity.class);
                                 startActivity(intent);
-                                //Toast.makeText(LoginActivity.this, "Velkommen! " + user.toString(),
-                                        //Toast.LENGTH_SHORT).show();
+
                             }else{
-                                Intent intent = new Intent(LoginActivity.this, VerificationActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
                                 startActivity(intent);
                                 Toast.makeText(LoginActivity.this, "Velkommen! " + user.toString(),
                                 Toast.LENGTH_SHORT).show();
                             }
-
-                                //changed it from HomepageActivity to VerificationActivity.
-
 
                         } else {
                             // If sign in fails, display a message to the user.
