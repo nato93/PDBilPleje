@@ -128,7 +128,6 @@ public class VerificationActivity extends AppCompatActivity {
                     mProcessText.setVisibility(View.VISIBLE);
                     mVerificationEt.requestFocus();
                 }
-
                 verifyCode(userTypedOTP);
             }
         });
@@ -152,7 +151,7 @@ public class VerificationActivity extends AppCompatActivity {
 
             @Override
             public void onVerificationFailed(FirebaseException e) {
-                Toast.makeText(VerificationActivity.this,"verification failed",Toast.LENGTH_SHORT).show();
+                Toast.makeText(VerificationActivity.this,"didn't sucessfully send code!",Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -166,7 +165,6 @@ public class VerificationActivity extends AppCompatActivity {
             }
         };
     }
-
 
 
     private void signInTheUserByCredentials(PhoneAuthCredential credential) {
