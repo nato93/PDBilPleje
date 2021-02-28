@@ -116,21 +116,29 @@ public class VerificationActivity extends AppCompatActivity {
             }
         });
 
-
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Check if it's the correct code.
-                userTypedOTP = mVerificationEt.toString();
-                PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode, userTypedOTP);
-                SigninWithPhone(credential);
 
-                //Check if the verification code send to the phone is equal to the one in mVerificationEt
-                //loginActivity.verifyCode(userTypedCode);
+                userTypedOTP = mVerificationEt.toString();
+
+                if (userTypedOTP.isEmpty() || userTypedOTP.length() < 6) {
+                    mProcessText.setText("Wrong OTP");
+                    mProcessText.setTextColor(Color.RED);
+                    mProcessText.setVisibility(View.VISIBLE);
+                    mVerificationEt.requestFocus();
+                }
+
+                verifyCode(userTypedOTP);
             }
         });
+
     }
 
+    private void verifyCode(String codeByUser) {
+        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode, codeByUser);
+        signInTheUserByCredentials(credential);
+    }
 
     private void StartFirebaseLogin() {
 
@@ -160,6 +168,29 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
 
+
+    private void signInTheUserByCredentials(PhoneAuthCredential credential) {
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.signInWithCredential(credential)
+                .addOnCompleteListener(VerificationActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        if (task.isSuccessful()) {
+                            Toast.makeText(VerificationActivity.this, "You logged in successfully!", Toast.LENGTH_SHORT).show();
+                            //Perform Your required action here to either let the user sign In or do something required
+                            Intent intent = new Intent(getApplicationContext(), HomepageActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                        } else {
+                            mProcessText.setText("Wrong code or System error!");
+                            mProcessText.setTextColor(Color.RED);
+                            mProcessText.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
+    }
+
     private void SigninWithPhone(PhoneAuthCredential credential) {
         auth.signInWithCredential(credential)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -177,6 +208,8 @@ public class VerificationActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
 
 
 
