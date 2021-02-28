@@ -27,27 +27,62 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.15"/>
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Navn: "
+
+        app:layout_constraintTop_toBottomOf="@id/guideline2"
+        app:layout_constraintBottom_toTopOf="@+id/changeNameButton"
+        app:layout_constraintLeft_toRightOf="@id/left_guideline" />
 
     <TextView
         android:id="@+id/textViewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FORNAVN EFTERNAVN"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintRight_toRightOf="@id/right_guideline"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@id/guideline2" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/changeNameButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Skift navn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:layout_constraintLeft_toLeftOf="@id/left_guideline"
+        app:layout_constraintRight_toRightOf="@id/right_guideline"
+        app:layout_constraintTop_toBottomOf="@id/textViewName"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="16dp"
+        />
+
+
+    <TextView
+        android:id="@+id/textViewEmail"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         app:layout_constraintLeft_toLeftOf="@id/left_guideline"
         app:layout_constraintRight_toRightOf="@id/right_guideline"
-        app:layout_constraintTop_toBottomOf="@id/guideline2"
-        android:text="FORNAVN EFTERNAVN" />
+        app:layout_constraintTop_toBottomOf="@id/changeNameButton"
+        android:layout_marginTop="24dp"
+        android:text="kek@gmail.com" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/changeNameButton"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:id="@+id/changeEmailButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Skift navn"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:text="Skift email"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         app:layout_constraintLeft_toLeftOf="@id/left_guideline"
         app:layout_constraintRight_toRightOf="@id/right_guideline"
-        app:layout_constraintTop_toBottomOf="@id/textViewName" />
+        app:layout_constraintTop_toBottomOf="@id/textViewEmail"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="16dp"
+        />
 
     <TextView
         android:id="@+id/textViewPassword"
@@ -55,7 +90,7 @@
         android:layout_width="wrap_content"
         app:layout_constraintLeft_toLeftOf="@id/left_guideline"
         app:layout_constraintRight_toRightOf="@id/right_guideline"
-        app:layout_constraintTop_toBottomOf="@id/changeNameButton"
+        app:layout_constraintTop_toBottomOf="@id/changeEmailButton"
         android:layout_marginTop="24dp"
         android:text="*****************" />
 

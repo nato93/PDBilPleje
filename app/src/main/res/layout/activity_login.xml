@@ -83,28 +83,14 @@
         android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="@id/left_guideline"
         app:layout_constraintRight_toRightOf="@id/right_guideline"
-        />
-    <ImageView
-        android:id="@+id/imageViewDivider"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/form_divider"
-        app:layout_constraintTop_toBottomOf="@id/textViewForgotPassword"
-        app:layout_constraintLeft_toLeftOf="@id/left_guideline"
-        app:layout_constraintRight_toRightOf="@id/right_guideline"
-        android:layout_marginTop="20dp"/>
+        /><![CDATA[
+
  />
 
 
-    <ImageView
-        android:id="@+id/fb_login_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/fb_login_button"
-        app:layout_constraintLeft_toLeftOf="@id/left_guideline"
-        app:layout_constraintRight_toRightOf="@id/right_guideline"
-        app:layout_constraintTop_toBottomOf="@id/imageViewDivider"
-        android:layout_marginTop="20dp" />
+
+
+    ]]>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/left_guideline"

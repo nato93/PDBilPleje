@@ -1,36 +1,34 @@
 package dk.aau.hr.pdbilpleje.Homepage.Booking;
 
-import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.OnMapReadyCallback;
 
 import java.util.ArrayList;
 
 import dk.aau.hr.pdbilpleje.R;
 
 
-public class BookingWhereFragment extends Fragment  {
+public class BookingWhereFragment extends Fragment {
 
     //implements OnMapReadyCallback
-
+    private static final String TAG = "BookingWhereFragment";
     public MapView mMapView;
     GoogleMap map;
     private Button mBookingNextButton, mBookingPreviousButton, mAddAddressButton;
@@ -39,6 +37,12 @@ public class BookingWhereFragment extends Fragment  {
     private AlertDialog dialog;
     private ArrayList<String> addresses;
     private EditText mEditTextAddress, mEditTextPostalCode, mEditTextCity;
+    private String selService, selCar, selAddress;
+
+    public BookingWhereFragment(String selService, String selCar) {
+        this.selService = selService;
+        this.selCar = selCar;
+    }
 
 
     @Override
@@ -55,22 +59,26 @@ public class BookingWhereFragment extends Fragment  {
         //initGoogleMap(savedInstanceState);
 
 
-
-
         ArrayAdapter<String> place =
                 new ArrayAdapter<>(
                         getContext(),
                         R.layout.dropdown_menu_popup_item,
                         addresses);
 
-        AutoCompleteTextView editTextFilledExposedDropdownServices =
-                view.findViewById(R.id.filled_exposed_dropdown);
+        AutoCompleteTextView editTextFilledExposedDropdownServices = view.findViewById(R.id.filled_exposed_dropdown);
         editTextFilledExposedDropdownServices.setAdapter(place);
+        editTextFilledExposedDropdownServices.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.e(TAG, "onItemSelected: position: " + i);
+                Log.e(TAG, "onItemSelected: " + addresses.get(i));
+                selAddress = addresses.get(i);
+            }
+        });
 
 
         mBookingNextButton = view.findViewById(R.id.bookingNextButton);
         mBookingPreviousButton = view.findViewById(R.id.bookingPreviousButton);
-
 
         mBookingPreviousButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +94,7 @@ public class BookingWhereFragment extends Fragment  {
         mBookingNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                BookingCalendarFragment bookingCalendarFragment = new BookingCalendarFragment();
+                BookingCalendarFragment bookingCalendarFragment = new BookingCalendarFragment(selService, selCar, selAddress);
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction()
                         .replace(R.id.mainPageLayout, bookingCalendarFragment, bookingCalendarFragment.getTag())

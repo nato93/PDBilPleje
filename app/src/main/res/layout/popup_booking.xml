@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/car" />
         <ImageButton
-            android:id="@+id/imageButto5"
+            android:id="@+id/imageButton5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/car" />
@@ -56,4 +56,11 @@
             android:layout_height="match_parent"
             android:src="@drawable/car" />
     </GridLayout>
+
+    <TextView
+        android:id="@+id/carType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text=""></TextView>
 </LinearLayout>
