@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -16,16 +16,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import org.w3c.dom.Text;
-
 import dk.aau.hr.pdbilpleje.FrontPageActivity;
-import dk.aau.hr.pdbilpleje.LoginActivity;
 import dk.aau.hr.pdbilpleje.R;
 
 public class SettingsFragment extends Fragment {
 
 
-    public TextView mLogUdTextView;
+    public Button mLogUdButton;
     public Switch mTwoFactorSwitch;
 
 
@@ -36,7 +33,7 @@ public class SettingsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 //aye
 
-        mLogUdTextView = view.findViewById(R.id.logUdTextView);
+        mLogUdButton = view.findViewById(R.id.signOutButton);
         mTwoFactorSwitch = view.findViewById(R.id.twoFactorSwitch);
 
 
@@ -75,7 +72,7 @@ public class SettingsFragment extends Fragment {
 
 
 
-        mLogUdTextView.setOnClickListener(new View.OnClickListener() {
+        mLogUdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.90" />
+
     <Button
         android:id="@+id/NæsteButton"
         android:layout_width="0dp"
@@ -27,6 +28,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@id/left_guideline"
         app:layout_constraintRight_toRightOf="@id/right_guideline" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
@@ -43,7 +45,9 @@
             android:layout_height="wrap_content"
             android:inputType="none"
             tools:text="@string/hvilken_service" />
+
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout2"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"

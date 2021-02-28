@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Payment.PaymentActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/ThemeOverlay.MaterialComponents.ActionBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:title="Betaling"
+            app:titleTextAppearance="@style/TextAppearance.AppCompat.Headline"
+            app:titleTextColor="@color/grey_20">
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginLeft="@dimen/spacing_xsmall"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="@dimen/spacing_xsmall"
+                android:layout_marginBottom="@dimen/spacing_xsmall"
+                android:visibility="visible"
+                app:cardCornerRadius="2dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="@dimen/spacing_large"
+                            android:layout_height="0dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Regning"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                            android:textColor="@color/grey_60"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey_10" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/spacing_middle" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_xmlarge"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="@dimen/spacing_large"
+                            android:layout_height="0dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Service"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                            android:textColor="@color/grey_60" />
+
+                        <TextView
+                            android:id="@+id/sub_total"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="AD 1234"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                            android:textColor="@color/grey_40" />
+
+                        <View
+                            android:layout_width="@dimen/spacing_large"
+                            android:layout_height="0dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_xmlarge"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="@dimen/spacing_large"
+                            android:layout_height="0dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Moms"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                            android:textColor="@color/grey_60" />
+
+                        <TextView
+                            android:id="@+id/tax"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="N/A"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                            android:textColor="@color/grey_40" />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_xmlarge"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="@dimen/spacing_large"
+                            android:layout_height="0dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TOTAL"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                            android:textColor="@color/grey_60" />
+
+                        <TextView
+                            android:id="@+id/total"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="ADE 1234"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                            android:textColor="@color/grey_40" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginLeft="@dimen/spacing_xsmall"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="@dimen/spacing_xsmall"
+                android:layout_marginBottom="@dimen/spacing_xsmall"
+                android:visibility="visible"
+                app:cardCornerRadius="2dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/enter_your_card_information_below"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/grey_60"
+                        android:layout_margin="@dimen/spacing_large"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey_10" />
+
+                    <com.stripe.android.view.CardMultilineWidget
+                        android:id="@+id/cardInputWidget"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:layout_editor_absoluteX="20dp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_pay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:onClick="payNow"
+                android:layout_marginTop="10dp"
+                android:text="BEtal nu"
+                android:textSize="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/cardInputWidget" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

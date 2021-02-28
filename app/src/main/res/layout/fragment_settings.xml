@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
 
-    <TextView
+  <!--  <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,15 +16,15 @@
         app:layout_constraintBottom_toTopOf="@+id/switch1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
 
     <Switch
         android:id="@+id/switch1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:paddingStart="70dp"
-        android:paddingEnd="70dp"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
         android:text="Tillad notifikationer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,9 +38,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:paddingStart="70dp"
-        android:paddingEnd="70dp"
-        android:text="Tillad applikationen at sende SMS og emails"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:text="Tillad applikation at sende SMS og emails"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -54,42 +54,49 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:paddingStart="70dp"
-        android:paddingEnd="70dp"
-        android:text="Slå to-faktor godkendelse til"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:text="Tillad 2-FA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switch3"
-        app:layout_constraintVertical_bias="0.114"
-        tools:text="@string/twoFactorSwitch" />
+        app:layout_constraintVertical_bias="0.114" />
 
-    <TextView
-        android:id="@+id/logUdTextView"
-        android:layout_width="match_parent"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/signOutButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="Log ud"
-        android:textColor="@color/colorAccent"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/twoFactorSwitch"
-        tools:text="@string/logUdTextView" /><![CDATA[
+        android:text="@string/log_ud_"
+        android:layout_margin="8dp"
+        app:strokeColor="@color/red_300"
+        app:rippleColor="@color/red_300"
+        android:textColor="@color/red_300"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@id/left_guideline"
+        app:layout_constraintRight_toLeftOf="@id/right_guideline" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/middle_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/left_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.10" />
 
-
-
-
-    android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-
-
-    ]]>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/right_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.90" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
