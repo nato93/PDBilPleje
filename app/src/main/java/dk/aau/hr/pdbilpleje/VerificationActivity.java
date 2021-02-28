@@ -137,13 +137,12 @@ public class VerificationActivity extends AppCompatActivity {
     private void verifyCode(String codeByUser) {
         //PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode, codeByUser);
         //signInTheUserByCredentials(credential);
+        Toast.makeText(VerificationActivity.this,"The code match!",Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(VerificationActivity.this, HomepageActivity.class));
 
         if (codeByUser.equals(verificationCode)){
-            Toast.makeText(VerificationActivity.this,"The codes match!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(VerificationActivity.this,"The codes matches!",Toast.LENGTH_SHORT).show();
             startActivity(new Intent(VerificationActivity.this, HomepageActivity.class));
-
-        } else {
-            Toast.makeText(VerificationActivity.this,"Codes don't match",Toast.LENGTH_SHORT).show();
         }
 
 
