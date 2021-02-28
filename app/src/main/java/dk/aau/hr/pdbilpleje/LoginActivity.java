@@ -51,7 +51,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         db = FirebaseFirestore.getInstance();
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-        docRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
     }
 
     @Override
@@ -84,6 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
 
                             //put this 1
+                            docRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
                             //put this 1
                             //Send code to the currrent user's phone number.
