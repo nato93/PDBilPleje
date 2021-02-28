@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     //public boolean userHasTwoFactor;
     public String phoneNo;
 
-    private DocumentReference docRef;
+    public DocumentReference docRef;
 
 
     @Override
@@ -82,9 +82,11 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
+
+
+
                             //put this 1
                             docRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
-
                             //put this 1
                             //Send code to the currrent user's phone number.
                             docRef.get()
@@ -125,7 +127,10 @@ public class LoginActivity extends AppCompatActivity {
                                                         Toast.LENGTH_SHORT).show();
                                             }
                                         }
+
+
                                     })
+
                                     .addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
@@ -142,6 +147,10 @@ public class LoginActivity extends AppCompatActivity {
                             System.out.println("Sign-in Failed: " + task.getException().getMessage());
                             Toast.makeText(LoginActivity.this, "couldn't login", Toast.LENGTH_SHORT).show();
                         }
+
+
+
+
                     }
                 });
     }
