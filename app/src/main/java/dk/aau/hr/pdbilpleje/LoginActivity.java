@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskExecutors;
 import com.google.firebase.FirebaseException;
@@ -22,6 +24,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.concurrent.TimeUnit;
@@ -32,12 +36,15 @@ public class LoginActivity extends AppCompatActivity {
     private final static String TAG = "LoginActivity";
     private FirebaseAuth firebaseAuth;
     public EditText mEmailEt, mPasswordEt;
-    public Button mLoginButton, mFBloginButton;
     public ImageView mLogoImageView;
-    private ProgressDialog progressDialog;
     FirebaseFirestore db;
+    public Button mLoginButton, mFBloginButton;
+    private ProgressDialog progressDialog;
     public boolean userHasTwoFactor;
     public String phoneNo;
+
+    private DocumentReference docRef;
+
 
     @Override
     public void onStart() {
@@ -56,10 +63,13 @@ public class LoginActivity extends AppCompatActivity {
         mPasswordEt = findViewById(R.id.textInputPassword);
         mLoginButton = findViewById(R.id.loginButton);
         mLogoImageView = findViewById(R.id.imageViewLogo2);
+
+
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //uncomment login()  if you want login to work again
+
                 Login();
             }
         });
@@ -72,16 +82,58 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = firebaseAuth.getCurrentUser();
-                                //If 2fa is turned on the user account, start verificationActivity
+
+                            //put this 1
+                            docRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+                            //put this 1
+                            //Send code to the currrent user's phone number.
+                            docRef.get()
+                                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                            if(documentSnapshot.exists()){
+
+                                                try {
+                                                    //boolean phoneNumber = documentSnapshot.getBoolean("twofactor");
+                                                    String userHasTwoFactor = documentSnapshot.getString("twofactor");
+
+                                                    //sendVerificationCodeToUser(phoneNumber);
+                                                } catch (NullPointerException e){
+                                                    Toast.makeText(LoginActivity.this, "The twofactor was null", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }else{
+                                                Toast.makeText(LoginActivity.this, "This Field doesn't exist.", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(LoginActivity.this, "Error!", Toast.LENGTH_SHORT).show();
+                                            Log.d(TAG, e.toString());
+                                        }
+                                    });
+
+
+
+                            //If 2fa is turned on the user account, start verificationActivity
                            // if (userHasTwoFactor == true){fd
                            // }
-                                //changed it from HomepageActivity to VerificationActivity.
+
+                            if(userHasTwoFactor == true){
+                                Intent intent = new Intent(LoginActivity.this, VerificationActivity.class);
+                                startActivity(intent);
+                                //Toast.makeText(LoginActivity.this, "Velkommen! " + user.toString(),
+                                        //Toast.LENGTH_SHORT).show();
+                            }else{
                                 Intent intent = new Intent(LoginActivity.this, VerificationActivity.class);
                                 startActivity(intent);
                                 Toast.makeText(LoginActivity.this, "Velkommen! " + user.toString(),
-                                        Toast.LENGTH_SHORT).show();
+                                Toast.LENGTH_SHORT).show();
+                            }
 
-
+                                //changed it from HomepageActivity to VerificationActivity.
 
 
                         } else {
