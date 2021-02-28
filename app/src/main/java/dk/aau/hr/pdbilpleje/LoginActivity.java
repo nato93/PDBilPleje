@@ -51,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         db = FirebaseFirestore.getInstance();
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        docRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
     }
 
     @Override
@@ -83,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
 
                             //put this 1
-                            docRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
                             //put this 1
                             //Send code to the currrent user's phone number.
                             docRef.get()
@@ -108,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                                                     }else{
                                                         Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
                                                         startActivity(intent);
-                                                        Toast.makeText(LoginActivity.this, "Velkommen! " + user.toString(),
+                                                        Toast.makeText(LoginActivity.this, "Velkommen! ",
                                                                 Toast.LENGTH_SHORT).show();
                                                     }
 
@@ -132,7 +133,6 @@ public class LoginActivity extends AppCompatActivity {
                                             Log.d(TAG, e.toString());
                                         }
                                     });
-
 
                         } else {
                             // If sign in fails, display a message to the user.

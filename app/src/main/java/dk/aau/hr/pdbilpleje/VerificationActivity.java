@@ -85,7 +85,6 @@ public class VerificationActivity extends AppCompatActivity {
                                         //sendVerificationCodeToUser(phoneNumber);
                                         StartFirebaseLogin();
 
-
                                         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                                                  "+45" + phoneNumber,                     // Phone number to verify
                                                 60,                           // Timeout duration
