@@ -59,7 +59,7 @@ public class SettingsFragment extends Fragment {
 
 
                     FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance()
-                            .getCurrentUser().getUid()).update("2fa", true);
+                            .getCurrentUser().getUid()).update("twofactor", true);
 
 
                 } else {
@@ -67,7 +67,7 @@ public class SettingsFragment extends Fragment {
                     Toast.makeText(getActivity(), "2-Faktor godkendelse er slået fra!",
                             Toast.LENGTH_SHORT).show();
                     FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance()
-                            .getCurrentUser().getUid()).update("2fa", false);
+                            .getCurrentUser().getUid()).update("twofactor", false);
                 }
             }
         });
