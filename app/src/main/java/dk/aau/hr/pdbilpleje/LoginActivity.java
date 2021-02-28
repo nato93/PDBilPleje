@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseFirestore db;
     public Button mLoginButton, mFBloginButton;
     private ProgressDialog progressDialog;
-    public boolean userHasTwoFactor;
+    //public boolean userHasTwoFactor;
     public String phoneNo;
 
     private DocumentReference docRef;
@@ -81,11 +81,9 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            FirebaseUser user = firebaseAuth.getCurrentUser();
 
                             //put this 1
                             docRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
-
                             //put this 1
                             //Send code to the currrent user's phone number.
                             docRef.get()
@@ -94,17 +92,36 @@ public class LoginActivity extends AppCompatActivity {
                                         public void onSuccess(DocumentSnapshot documentSnapshot) {
                                             if(documentSnapshot.exists()){
 
-
                                                 try {
                                                     //boolean phoneNumber = documentSnapshot.getBoolean("twofactor");
-                                                    String userHasTwoFactor = documentSnapshot.getString("twofactor");
+                                                    boolean userHasTwoFactor = documentSnapshot.getBoolean("twofactor");
+                                                    FirebaseUser user = firebaseAuth.getCurrentUser();
 
-                                                    //sendVerificationCodeToUser(phoneNumber);
+                                                    //If 2fa is turned on the user account, start verificationActivity
+                                                    // if (userHasTwoFactor == true){fd
+                                                    // }
+
+                                                    if(userHasTwoFactor == true){
+                                                        Intent intent = new Intent(LoginActivity.this, VerificationActivity.class);
+                                                        startActivity(intent);
+
+                                                    }else{
+                                                        Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
+                                                        startActivity(intent);
+                                                        Toast.makeText(LoginActivity.this, "Velkommen! " + user.toString(),
+                                                                Toast.LENGTH_SHORT).show();
+                                                    }
+
                                                 } catch (NullPointerException e){
                                                     Toast.makeText(LoginActivity.this, "The twofactor was null", Toast.LENGTH_SHORT).show();
+
                                                 }
                                             }else{
                                                 Toast.makeText(LoginActivity.this, "This Field doesn't exist.", Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
+                                                startActivity(intent);
+                                                Toast.makeText(LoginActivity.this, "Velkommen! ",
+                                                        Toast.LENGTH_SHORT).show();
                                             }
                                         }
                                     })
@@ -116,22 +133,6 @@ public class LoginActivity extends AppCompatActivity {
                                         }
                                     });
 
-
-
-                            //If 2fa is turned on the user account, start verificationActivity
-                           // if (userHasTwoFactor == true){fd
-                           // }
-
-                            if(userHasTwoFactor == true){
-                                Intent intent = new Intent(LoginActivity.this, VerificationActivity.class);
-                                startActivity(intent);
-
-                            }else{
-                                Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
-                                startActivity(intent);
-                                Toast.makeText(LoginActivity.this, "Velkommen! " + user.toString(),
-                                Toast.LENGTH_SHORT).show();
-                            }
 
                         } else {
                             // If sign in fails, display a message to the user.
